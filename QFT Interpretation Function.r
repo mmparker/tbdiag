@@ -6,7 +6,8 @@ qft.interp <- function(nil, tb, mitogen){
     #Setup the results vector
     result <- rep(NA, times = length(nil)) 
 
-    #The floating point comparison will bite you in the ass for some of these.  Instead of >=, define a small value and add it to the number being compared
+    #The floating point comparison will bite you in the ass for some of these.
+    #Instead of >=, define a small value and add it to the number being compared
     #In essence, convert any left-hand value that's truly equal to the right-hand
     # value into one that is *greater* than the right-hand value.
     #Set an epsilon that is tiny relative to the numbers being compared.
@@ -17,7 +18,6 @@ qft.interp <- function(nil, tb, mitogen){
         #If any test value is NA, no interpretation - skip
         if(is.na(tb[i]) | is.na(nil[i]) | is.na(mitogen[i])) {next}
 
-        #If nil is greater than 8.0, the test is indeterminate.
         if(nil[i] - epsilon > 8.0) {result[i] <- "Indeterminate"} else {
             if(tb[i] - nil[i] + epsilon >= 0.35 & tb[i] - nil[i] + epsilon >= .25 * nil[i])
                 {result[i] <- "Positive"} else {
