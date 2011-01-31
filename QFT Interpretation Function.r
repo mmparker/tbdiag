@@ -18,7 +18,7 @@ qft.interp <- function(nil, tb, mitogen){
         #If any test value is NA, no interpretation - skip
         if(is.na(tb[i]) | is.na(nil[i]) | is.na(mitogen[i])) {next}
 
-        if(nil[i] - epsilon > 8.0) {result[i] <- "Indeterminate"} else {
+        if(nil[i] + epsilon > 8.0) {result[i] <- "Indeterminate"} else {
             if(tb[i] - nil[i] + epsilon >= 0.35 & tb[i] - nil[i] + epsilon >= .25 * nil[i])
                 {result[i] <- "Positive"} else {
                     if((tb[i] - nil[i] + epsilon < 0.35 | tb[i] - nil[i] + epsilon < .25 * nil[i]) &
