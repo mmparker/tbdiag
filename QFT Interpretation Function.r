@@ -18,11 +18,11 @@ qft.interp <- function(nil, tb, mitogen, tbnil.cutoff = 0.35){
                is.numeric(mitogen))){stop(
                "The vectors of TB, nil, and mitogen values must all be numeric.")}
                
-    # The floating point comparison will bite you in the ass for some of these.
+    # Floating point comparisons will bite you in the ass for some of these.
     # Instead of >=, define a small value and add it to the number being compared
     # In essence, convert any left-hand value that's truly equal to the right-hand
     # value into one that is *greater* than the right-hand value.
-    # This is the value used by all.equal().
+    # This is the tolerance value used by all.equal().
     tol <- .Machine$double.eps ^ 0.5
                
     # Check for positive results
