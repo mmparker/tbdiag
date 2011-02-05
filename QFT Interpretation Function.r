@@ -1,8 +1,11 @@
 #This function takes values of nil tube, TB tube, and mitogen scores, and returns Positive, Negative, or Indeterminate.
-qft.interp <- function(nil, tb, mitogen){
+qft.interp <- function(nil, tb, mitogen, tbnil.cutoff = 0.35){
 #Given vectors of nil, TB antigen, and mitogen results in IU/mL,
 #this function computes QFT qualitative interpretations.  The function
-#uses the Cellestis North America criterion.
+#uses the Cellestis North America criterion by default;
+#alternative TB - nil cutoffs can be specified using the tbnil.cutoff
+#argument.  Further changes to the criteria require modification of the
+#function.
 
     #Check for equal vector lengths
     if(!isTRUE(all.equal(length(nil), length(tb))) |
@@ -31,12 +34,12 @@ qft.interp <- function(nil, tb, mitogen){
         if(is.na(tb[i]) | is.na(nil[i]) | is.na(mitogen[i])) {next}
 
         if(nil[i] + epsilon > 8.0) {result[i] <- "Indeterminate"} else {
-            if(tb[i] - nil[i] + epsilon > 0.35 & tb[i] - nil[i] + epsilon > .25 * nil[i])
+            if(tb[i] - nil[i] + epsilon > tbnil.cutoff & tb[i] - nil[i] + epsilon > .25 * nil[i])
                 {result[i] <- "Positive"} else {
-                    if((tb[i] - nil[i] + epsilon < 0.35 | tb[i] - nil[i] + epsilon < .25 * nil[i]) &
+                    if((tb[i] - nil[i] + epsilon < tbnil.cutoff | tb[i] - nil[i] + epsilon < .25 * nil[i]) &
                         !(mitogen[i] - nil[i] + epsilon < 0.5))
                         {result[i] <- "Negative"} else {
-                            if((tb[i] - nil[i] + epsilon < 0.35 | tb[i] - nil[i] + epsilon < .25 * nil[i]) &
+                            if((tb[i] - nil[i] + epsilon < tbnil.cutoff | tb[i] - nil[i] + epsilon < .25 * nil[i]) &
                                 mitogen[i] - nil[i] + epsilon < 0.5)
                                 {result[i] <- "Indeterminate"}
                 }
