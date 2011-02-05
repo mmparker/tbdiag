@@ -1,7 +1,9 @@
 #This function takes values of nil tube, TB tube, and mitogen scores, and returns Positive, Negative, or Indeterminate.
 qft.interp <- function(nil, tb, mitogen){
     #Check for equal vector lengths
-    if(!isTRUE(all.equal(length(nil), length(tb), length(mitogen)))){stop("The vectors of TB, nil, and mitogen values must all be the same length.")}
+    if(!isTRUE(all.equal(length(nil), length(tb))) |
+       !isTRUE(all.equal(length(nil), length(mitogen)))){stop(
+           "The vectors of TB, nil, and mitogen values must all be the same length.")}
     
     #Check for numeric results
     if(!isTRUE(is.numeric(nil) & is.numeric(tb) & is.numeric(mitogen))){stop("The vectors of TB, nil, and mitogen values must all be numeric.")}
