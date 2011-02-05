@@ -1,12 +1,19 @@
 #This function takes values of nil tube, TB tube, and mitogen scores, and returns Positive, Negative, or Indeterminate.
 qft.interp <- function(nil, tb, mitogen){
+#Given vectors of nil, TB antigen, and mitogen results in IU/mL,
+#this function computes QFT qualitative interpretations.  The function
+#uses the Cellestis North America criterion.
+
     #Check for equal vector lengths
     if(!isTRUE(all.equal(length(nil), length(tb))) |
        !isTRUE(all.equal(length(nil), length(mitogen)))){stop(
            "The vectors of TB, nil, and mitogen values must all be the same length.")}
     
     #Check for numeric results
-    if(!isTRUE(is.numeric(nil) & is.numeric(tb) & is.numeric(mitogen))){stop("The vectors of TB, nil, and mitogen values must all be numeric.")}
+    if(!isTRUE(is.numeric(nil) &
+               is.numeric(tb) &
+               is.numeric(mitogen))){stop(
+               "The vectors of TB, nil, and mitogen values must all be numeric.")}
     
     #Set up the results vector
     result <- rep(NA, times = length(nil)) 
