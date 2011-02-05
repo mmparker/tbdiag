@@ -58,6 +58,8 @@ tspot.interp <- function(nil, panel_a, panel_b, mitogen){
 
 # Write a test case sometime.     
 # Possible values for things: NA, 1:21, text, factor elements, very high numbers,
-# negative numbers...              
+# negative numbers...         
+
+#Convert to allow varying cutoffs and borderline values     
   
 
