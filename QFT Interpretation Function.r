@@ -3,7 +3,10 @@ qft.interp <- function(nil, tb, mitogen){
     #Check for equal vector lengths
     if(!isTRUE(all.equal(length(nil), length(tb), length(mitogen)))){stop("The vectors of TB, nil, and mitogen values must all be the same length.")}
     
-    #Setup the results vector
+    #Check for numeric results
+    if(!isTRUE(is.numeric(nil) & is.numeric(tb) & is.numeric(mitogen))){stop("The vectors of TB, nil, and mitogen values must all be numeric.")}
+    
+    #Set up the results vector
     result <- rep(NA, times = length(nil)) 
 
     #The floating point comparison will bite you in the ass for some of these.
