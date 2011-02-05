@@ -2,7 +2,10 @@
 # Positive, Negative, Indeterminate, or Failed.
 tspot.interp <- function(nil, panel_a, panel_b, mitogen){
     # Check for equal vector lengths
-    if(!isTRUE(all.equal(length(nil), length(panel_a), length(panel_b), length(mitogen)))){stop("The vectors of nil, Panel A, Panel B, and mitogen values must all be the same length.")}
+    if(!isTRUE(all.equal(length(nil), length(panel_a)) |
+               all.equal(length(nil), length(panel_b)) |
+               all.equal(length(nil), length(mitogen)))){stop(
+               "The vectors of nil, Panel A, Panel B, and mitogen values must all be the same length.")}
     
     # Setup the results vector
     result <- rep(NA, times = length(nil)) 
