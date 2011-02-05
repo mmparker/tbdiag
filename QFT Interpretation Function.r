@@ -1,4 +1,4 @@
-# This function takes values of nil tube, TB tube, and mitogen scores, and returns Positive, Negative, or Indeterminate.
+
 qft.interp <- function(nil, tb, mitogen, tbnil.cutoff = 0.35){
 # Given vectors of nil, TB antigen, and mitogen results in IU/mL,
 # this function computes QFT qualitative interpretations.  The function
