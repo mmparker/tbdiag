@@ -26,9 +26,9 @@ qft.interp <- function(nil, tb, mitogen, tbnil.cutoff = 0.35){
     tol <- .Machine$double.eps ^ 0.5
                
     # Check for positive results
-    if(!isTRUE((na.omit(nil) > (0 - tol)) &
-               (na.omit(tb) > (0 - tol)) &
-               (na.omit(mitogen) > (0 - tol)))){stop(
+    if(!isTRUE((c((na.omit(nil) > (0 - tol)),
+                 (na.omit(tb) > (0 - tol)),
+                 (na.omit(mitogen) > (0 - tol)))))){stop(
                "The vectors of TB, nil, and mitogen values must all be positive.")}
     
     # Set up the results vector
