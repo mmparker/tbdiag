@@ -17,30 +17,36 @@ qft.interp <- function(nil, tb, mitogen, tbnil.cutoff = 0.35){
                is.numeric(tb) &
                is.numeric(mitogen))){stop(
                "The vectors of TB, nil, and mitogen values must all be numeric.")}
-    
-    # Set up the results vector
-    result <- rep(NA, times = length(nil)) 
-
+               
     # The floating point comparison will bite you in the ass for some of these.
     # Instead of >=, define a small value and add it to the number being compared
     # In essence, convert any left-hand value that's truly equal to the right-hand
-    #  value into one that is *greater* than the right-hand value.
-    # Set an epsilon that is tiny relative to the numbers being compared.
-    epsilon <- 1e-10
+    # value into one that is *greater* than the right-hand value.
+    # This is the value used by all.equal().
+    tol <- .Machine$double.eps ^ 0.5
+               
+    # Check for positive results
+    if(!isTRUE((nil > (0 - tol)) &
+               (tb > (0 - tol)) &
+               (mitogen > (0 - tol)))){stop(
+               "The vectors of TB, nil, and mitogen values must all be positive.")}
+    
+    # Set up the results vector
+    result <- rep(NA, times = length(nil)) 
 
     # Iterate through each test.
     for(i in seq_along(result)){
         # If any test value is NA, no interpretation - skip
         if(is.na(tb[i]) | is.na(nil[i]) | is.na(mitogen[i])) {next}
 
-        if(nil[i] + epsilon > 8.0) {result[i] <- "Indeterminate"} else {
-            if(tb[i] - nil[i] + epsilon > tbnil.cutoff & tb[i] - nil[i] + epsilon > .25 * nil[i])
+        if(nil[i] + tol > 8.0) {result[i] <- "Indeterminate"} else {
+            if(tb[i] - nil[i] + tol > tbnil.cutoff & tb[i] - nil[i] + tol > .25 * nil[i])
                 {result[i] <- "Positive"} else {
-                    if((tb[i] - nil[i] + epsilon < tbnil.cutoff | tb[i] - nil[i] + epsilon < .25 * nil[i]) &
-                        !(mitogen[i] - nil[i] + epsilon < 0.5))
+                    if((tb[i] - nil[i] + tol < tbnil.cutoff | tb[i] - nil[i] + tol < .25 * nil[i]) &
+                        !(mitogen[i] - nil[i] + tol < 0.5))
                         {result[i] <- "Negative"} else {
-                            if((tb[i] - nil[i] + epsilon < tbnil.cutoff | tb[i] - nil[i] + epsilon < .25 * nil[i]) &
-                                mitogen[i] - nil[i] + epsilon < 0.5)
+                            if((tb[i] - nil[i] + tol < tbnil.cutoff | tb[i] - nil[i] + tol < .25 * nil[i]) &
+                                mitogen[i] - nil[i] + tol < 0.5)
                                 {result[i] <- "Indeterminate"}
                 }
             }
