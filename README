@@ -1,0 +1,3 @@
+This is the very beginnings of what will eventually be an R package designed to make working with TB diagnostics data easier for researchers.  At this point, it includes only two functions: one for interpreting the Cellestis Quantiferon (using North American standards, with an argument to take non-standard TB - Nil values) and the Oxford Immunotec T.SPOT.
+
+I've compared the results of these functions to several thousand lab-reported Quantiferon and T.SPOT results, and hand-calculated the correct results when faced with discrepancies.  While I believe that the current versions of these functions are very robust, they are provided with no warranty and I strongly encourage users to investigate any unusual results (and report back!)

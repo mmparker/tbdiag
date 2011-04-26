@@ -1,0 +1,24 @@
+
+
+Fixes:
+ - Is the nested if structure of these functions the best approach?
+
+New Features for Existing Functions:
+ - Add an argument for TB - Nil for the TSPOT
+ - Create an option for brief ("Indeterminate") and verbose ("Indeterminate due to high nil") output for:
+    - the Quantiferon interpretation function
+    - the TSPOT interpretation function
+
+
+
+New Functionality:
+ - Given the numerous factors involved in interpreting TST results, is it feasible to code a TST interpretation function?
+
+
+
+Datasets:
+ - Get permissions for:
+   - Veerapathran et al 2008
+   - TO 18
+   - TO 20
+   - So many more
