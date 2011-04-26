@@ -5,14 +5,19 @@ Fixes:
 
 New Features for Existing Functions:
  - Add an argument for TB - Nil for the TSPOT
+
  - Create an option for brief ("Indeterminate") and verbose ("Indeterminate due to high nil") output for:
     - the Quantiferon interpretation function
     - the TSPOT interpretation function
+
+  - Add an argument to specify different criteria sets - North Am vs Global, etc.
 
 
 
 New Functionality:
  - Given the numerous factors involved in interpreting TST results, is it feasible to code a TST interpretation function?
+
+ - Programmatic access to the BCG World Atlas?
 
 
 
