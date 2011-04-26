@@ -2,6 +2,7 @@
 
 Fixes:
  - Is the nested if structure of these functions the best approach?
+ - UNIT TESTING
 
 New Features for Existing Functions:
  - Add an argument for TB - Nil for the TSPOT
