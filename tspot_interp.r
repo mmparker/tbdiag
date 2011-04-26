@@ -1,8 +1,8 @@
 
 tspot.interp <- function(nil, panel_a, panel_b, mitogen){
-# Given vectors of nil, TB antigen (panels A and B), and mitogen results in spots,
-# this function computes TSPOT qualitative interpretations.  The function
-# uses the Oxford Immunotec North America criterion by default;
+# Given vectors of nil, TB antigen (panels A and B), and mitogen results
+# in spots, this function computes TSPOT qualitative interpretations.
+# The function uses the Oxford Immunotec North America criterion by default;
 # alternative TB - nil cutoffs can be specified using the tbnil.cutoff
 # argument.  Further changes to the criteria require modification of the
 # function.
@@ -57,8 +57,8 @@ tspot.interp <- function(nil, panel_a, panel_b, mitogen){
 
 
 # Write a test case sometime.     
-# Possible values for things: NA, 1:21, text, factor elements, very high numbers,
-# negative numbers...         
+# Possible values for things: NA, 1:21, text, factor elements, very high
+# numbers, negative numbers...         
 
 #Convert to allow varying cutoffs and borderline values     
   
