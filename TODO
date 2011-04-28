@@ -6,17 +6,23 @@ Fixes:
 
 New Features for Existing Functions:
  - Add an argument for TB - Nil for the TSPOT
+   This is more difficult than it seems because of the borderlines.  Would
+   have to create another version of the function without borderlines (which
+   is basically what the non-NA criteria are, I think)
 
- - Create an option for brief ("Indeterminate") and verbose ("Indeterminate due to high nil") output for:
+ - Create an option for brief ("Indeterminate") and verbose ("Indeterminate
+   due to high nil") output for:
     - the Quantiferon interpretation function
     - the TSPOT interpretation function
+    - See branch "verbose" for untested draft
 
-  - Add an argument to specify different criteria sets - North Am vs Global, etc.
+  - Add an argument to specify different criteria sets - North Am vs Global
 
 
 
 New Functionality:
- - Given the numerous factors involved in interpreting TST results, is it feasible to code a TST interpretation function?
+ - Given the numerous factors involved in interpreting TST results, is it 
+   feasible to code a TST interpretation function?
 
  - Programmatic access to the BCG World Atlas?
 
