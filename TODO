@@ -16,8 +16,11 @@ New Features for Existing Functions:
     - the TSPOT interpretation function
     - See branch "verbose" for untested draft
 
-  - Add an argument to specify different criteria sets - North Am vs Global
+ - Add an argument to specify different criteria sets - North Am vs Global
 
+ - Check that all test inputs are positive.
+
+ - Add "test could not be interpreted" result to QFT.
 
 
 New Functionality:
