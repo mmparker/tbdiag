@@ -1,11 +1,31 @@
 
-qft.interp <- function(nil, tb, mitogen, tbnil.cutoff = 0.35){
-# Given vectors of nil, TB antigen, and mitogen results in IU/mL,
-# this function computes QFT qualitative interpretations.  The function
-# uses the Cellestis North America criterion by default;
-# alternative TB - nil cutoffs can be specified using the tbnil.cutoff
-# argument.  Further changes to the criteria require modification of the
-# function.
+qft.interp <- function(nil, tb, mitogen,
+                       tbnil.cutoff = 0.35,
+                       output = "verbose"){
+
+    # Given vectors of nil, TB antigen, and mitogen results in IU/mL,
+    # this function computes QFT qualitative interpretations.  The function
+    # uses the Cellestis North America criterion by default;
+    # alternative TB - nil cutoffs can be specified using the tbnil.cutoff
+    # argument.  Further changes to the criteria require modification of the
+    # function.
+
+    # Set up the interpretation table with terse and verbose messages
+    interp.table <- data.frame(
+               onechar = c("I", "P", "N", "I"),
+               terse = c("Indeterminate", 
+                         "Positive", 
+                         "Negative", 
+                         "Indeterminate"),
+               verbose = c("Indeterminate - high nil",
+                           "Positive", 
+                           "Negative",
+                           "Indeterminate - mitogen too close to nil")
+                               )
+
+    # Check for valid output argument
+    if(!(output %in% names(interp.table))){
+        "An invalid output option was specified."}
 
     # Check for equal vector lengths
     if(!isTRUE(all.equal(length(nil), length(tb))) |
@@ -34,15 +54,15 @@ qft.interp <- function(nil, tb, mitogen, tbnil.cutoff = 0.35){
         # If any test value is NA, no interpretation - skip
         if(is.na(tb[i]) | is.na(nil[i]) | is.na(mitogen[i])) {next}
 
-        if(nil[i] + tol > 8.0) {result[i] <- "Indeterminate"} else {
+        if(nil[i] + tol > 8.0) {result[i] <- interp.table[1, output]} else {
             if(tb[i] - nil[i] + tol > tbnil.cutoff & tb[i] - nil[i] + tol > .25 * nil[i])
-                {result[i] <- "Positive"} else {
+                {result[i] <- interp.table[2, output]} else {
                     if((tb[i] - nil[i] + tol < tbnil.cutoff | tb[i] - nil[i] + tol < .25 * nil[i]) &
                         !(mitogen[i] - nil[i] + tol < 0.5))
-                        {result[i] <- "Negative"} else {
+                        {result[i] <- interp.table[3, output]} else {
                             if((tb[i] - nil[i] + tol < tbnil.cutoff | tb[i] - nil[i] + tol < .25 * nil[i]) &
                                 mitogen[i] - nil[i] + tol < 0.5)
-                                {result[i] <- "Indeterminate"}
+                                {result[i] <- interp.table[4, output]}
                 }
             }
         }
