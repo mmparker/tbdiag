@@ -41,7 +41,7 @@ tspot.interp <- function(nil, panel_a, panel_b, mitogen){
                   if((panel_a[i] - nil[i]) <= 4 & (panel_b[i] - nil[i]) <= 4 & mitogen[i] < 20)
                     {result[i] <- "Invalid - low mitogen"} else {
                   
-                    result[i] <- "Don't know what to say"}
+                    result[i] <- "This test could not be interpreted."}
             
                 }
               }
