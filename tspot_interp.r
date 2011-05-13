@@ -23,31 +23,29 @@ tspot.interp <- function(nil, panel_a, panel_b, mitogen){
     # Setup the results vector
     result <- rep(NA, times = length(nil)) 
 
-    # Iterate through each test.
-    for(i in seq_along(result)){
-        # If any test value is NA, no interpretation - skip
-        if(is.na(panel_a[i]) | is.na(panel_b[i]) | is.na(nil[i]) | is.na(mitogen[i])) {next}
+    # Identify the maximum of Panel A - Nil and Panel B - Nil
+    panel.max <- ifelse((panel_a - nil) > (panel_b - nil),
+                        yes = (panel_a - nil), no = (panel_b - nil)
+    )
 
-        if(nil[i] > 10){result[i] <- "Invalid - high nil"} else {
-          
-          if(max(panel_a[i] - nil[i], panel_b[i] - nil[i]) %in% c(5, 6, 7)){
-            result[i] <- "Borderline"} else {
-            
-              if((panel_a[i] - nil[i]) >= 8 | (panel_b[i] - nil[i]) >= 8) {result[i] <- "Positive"} else {
-                
-                if((panel_a[i] - nil[i]) <= 4 & (panel_b[i] - nil[i]) <= 4 & mitogen[i] >= 20)
-                  {result[i] <- "Negative"} else {
-                  
-                  if((panel_a[i] - nil[i]) <= 4 & (panel_b[i] - nil[i]) <= 4 & mitogen[i] < 20)
-                    {result[i] <- "Invalid - low mitogen"} else {
-                  
-                    result[i] <- "This test could not be interpreted."}
-            
-                }
-              }
-            }
-          }
-        }
+    # Compute the results
+    result[is.na(result) &
+           nil > 10] <- "Invalid - high nil"
+
+    result[is.na(result) &
+           panel.max %in% c(5, 6, 7)] <- "Borderline"
+
+    result[is.na(result) &
+           panel.max >= 8] <- "Positive"
+
+    result[is.na(result) &
+           panel.max <= 4 &
+           mitogen >= 20] <- "Negative"
+
+    result[is.na(result) &
+           panel.max <= 4 &
+           mitogen < 20] <- "Invalid - low mitogen"
+
     return(result)
 }
 
