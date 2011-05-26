@@ -49,6 +49,6 @@ qft.interp <- function(nil, tb, mitogen, tbnil.cutoff = 0.35){
   
     return(result)
 
-
+}
 
 # Development notes: This algorithm is based on the flow chart L05995008A Apr 2007 from Cellestis.
