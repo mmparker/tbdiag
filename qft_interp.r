@@ -20,8 +20,9 @@ qft.interp <- function(nil, tb, mitogen,
                verbose = c("Indeterminate - high nil",
                            "Positive", 
                            "Negative",
-                           "Indeterminate - mitogen too close to nil")
-                               )
+                           "Indeterminate - mitogen too close to nil"),
+               stringsAsFactors = FALSE
+    )
 
     # Check for valid output argument
     if(!(output %in% names(interp.table))){

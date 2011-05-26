@@ -8,11 +8,20 @@ tspot.interp <- function(nil, panel_a, panel_b, mitogen, output = "terse"){
 # function.
 
     # Set up the interpretation table with terse and verbose messages
-    interp.table <- data.frame(onechar = c("I", "B", "P", "N", "I"),
-                               terse = c("Invalid", "Borderline", "Positive", "Negative", "Invalid"),
-                               verbose = c("Invalid - high nil", "Borderline", "Positive", "Negative", 
-                                           "Invalid - low mitogen")
-                               )
+    interp.table <- data.frame(
+                    onechar = c("I", "B", "P", "N", "I"),
+                    terse = c("Invalid",
+                              "Borderline", 
+                              "Positive", 
+                              "Negative", 
+                              "Invalid"),
+                    verbose = c("Invalid - high nil", 
+                                "Borderline", 
+                                "Positive", 
+                                "Negative", 
+                                "Invalid - low mitogen"),
+                    stringsAsFactors = FALSE
+    )
 
     # Check for valid output argument
     if(!(output %in% names(interp.table))){"An invalid output option was specified."}
