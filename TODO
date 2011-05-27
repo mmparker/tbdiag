@@ -1,7 +1,6 @@
 
 
 Fixes:
- - Is the nested if structure of these functions the best approach?
  - UNIT TESTING
 
 New Features for Existing Functions:
@@ -10,17 +9,11 @@ New Features for Existing Functions:
    have to create another version of the function without borderlines (which
    is basically what the non-NA criteria are, I think)
 
- - Create an option for brief ("Indeterminate") and verbose ("Indeterminate
-   due to high nil") output for:
-    - the Quantiferon interpretation function
-    - the TSPOT interpretation function
-    - See branch "verbose" for untested draft
-
  - Add an argument to specify different criteria sets - North Am vs Global
 
  - Check that all test inputs are positive.
 
- - Add "test could not be interpreted" result to QFT.
+ - Add "test could not be interpreted" result to the functions.
 
 
 New Functionality:
