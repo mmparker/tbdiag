@@ -2,10 +2,10 @@
 \alias{tspot.interp}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Interpret the results of the Oxford Immunotec TSPOT.TB.
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+This function takes quantitative results of the TSPOT (nil, panel A, panel B, and mitogen) and returns the manufacturer-specified qualitative interpretation.
 }
 \usage{
 tspot.interp(nil, panel_a, panel_b, mitogen, output = "terse")
@@ -13,45 +13,43 @@ tspot.interp(nil, panel_a, panel_b, mitogen, output = "terse")
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{nil}{
-%%     ~~Describe \code{nil} here~~
+A vector of nil/negative control results (in spots)
 }
   \item{panel_a}{
-%%     ~~Describe \code{panel_a} here~~
+A vector of Panel A (ESAT-6) results (in spots)
 }
   \item{panel_b}{
-%%     ~~Describe \code{panel_b} here~~
+A vector of Panel B (CFP10) results (in spots)
 }
   \item{mitogen}{
-%%     ~~Describe \code{mitogen} here~~
+A vector of mitogen/positive control results (in spots)
 }
   \item{output}{
-%%     ~~Describe \code{output} here~~
+The level of verbosity ("onechar", "terse", "verbose") of the output
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+The function returns a vector of qualitative results.  The verbosity of results depends on the argument passed to "output":
+\item{onechar }{Returns a single character indicating the result (N for Negative, B for Borderline, P for Positive, I for Indeterminate).}
+\item{terse }{Returns a single word indicating the result (Negative, Borderline, Positive, Indeterminate).}
+\item{verbose }{Returns the same results as "terse", with the addition of a short comment indicating the reason for an "Indeterminate" result.
 }
 \references{
-%% ~put references to the literature/web site here ~
+Oxford Immunotec <http://www.oxfordimmunotec.com/>
 }
 \author{
-%%  ~~who you are~~
+Matt Parker <mattmparker@gmail.com>
 }
 \note{
-%%  ~~further notes~~
+This function is provided purely as a convenience and is not a replacement for manual interpretation, manufacturer-provided software, or common sense.  Absolutely not for clinical use.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{qft.interp}} for Quantiferon interpretation.
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----

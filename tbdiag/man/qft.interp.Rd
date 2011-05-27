@@ -13,19 +13,19 @@ qft.interp(nil, tb, mitogen, tbnil.cutoff = 0.35, output = "terse")
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{nil}{
-The nil result (in IU/mL)
+A vector of nil results (in IU/mL)
 }
   \item{tb}{
-The TB antigen result (in IU/mL)
+A vector of TB antigen results (in IU/mL)
 }
   \item{mitogen}{
-The mitogen result (in IU/mL)
+A vector of mitogen results (in IU/mL)
 }
   \item{tbnil.cutoff}{
-The value of TB antigen - nil at which the test will interpreted as a positive.
+The value of TB antigen - nil at which the test will interpreted as a positive
 }
   \item{output}{
-The level of verbosity ("onechar", "terse", "verbose").
+The level of verbosity ("onechar", "terse", "verbose") of the output
 }
 }
 \details{
@@ -35,22 +35,22 @@ The level of verbosity ("onechar", "terse", "verbose").
 The function returns a vector of qualitative results.  The verbosity of results depends on the argument passed to "output":
 \item{onechar }{Returns a single character indicating the result (N for Negative, P for Positive, I for Indeterminate).}
 \item{terse }{Returns a single word indicating the result (Negative, Positive, Indeterminate).}
-\item{verbose }{Returns the same results as "terse", with the addition of a short comment indicating the reason for an "Indeterminate" result).}
+\item{verbose }{Returns the same results as "terse", with the addition of a short comment indicating the reason for an "Indeterminate" result.}
 }
 \references{
-%% ~put references to the literature/web site here ~
+Cellestis <http://www.cellestis.com/>
 }
 \author{
 Matt Parker <mattmparker@gmail.com>
 }
 \note{
-This function is provided purely as a convenience and is not a replacement for anything whatsoever, especially not common sense.  Absolutely not for clinical use.
+This function is provided purely as a convenience and is not a replacement for manual interpretation, manufacturer-provided software, or common sense.  Absolutely not for clinical use.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{tspot.interp}} for TSPOT.TB interpretation.
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----
