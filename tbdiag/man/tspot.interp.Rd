@@ -1,5 +1,65 @@
+\name{tspot.interp}
+\alias{tspot.interp}
+%- Also NEED an '\alias' for EACH other topic documented here.
+\title{
+%%  ~~function to do ... ~~
+}
+\description{
+%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+}
+\usage{
+tspot.interp(nil, panel_a, panel_b, mitogen, output = "terse")
+}
+%- maybe also 'usage' for other objects documented here.
+\arguments{
+  \item{nil}{
+%%     ~~Describe \code{nil} here~~
+}
+  \item{panel_a}{
+%%     ~~Describe \code{panel_a} here~~
+}
+  \item{panel_b}{
+%%     ~~Describe \code{panel_b} here~~
+}
+  \item{mitogen}{
+%%     ~~Describe \code{mitogen} here~~
+}
+  \item{output}{
+%%     ~~Describe \code{output} here~~
+}
+}
+\details{
+%%  ~~ If necessary, more details than the description above ~~
+}
+\value{
+%%  ~Describe the value returned
+%%  If it is a LIST, use
+%%  \item{comp1 }{Description of 'comp1'}
+%%  \item{comp2 }{Description of 'comp2'}
+%% ...
+}
+\references{
+%% ~put references to the literature/web site here ~
+}
+\author{
+%%  ~~who you are~~
+}
+\note{
+%%  ~~further notes~~
+}
 
-tspot.interp <- function(nil, panel_a, panel_b, mitogen, output = "terse"){
+%% ~Make other sections like Warning with \section{Warning }{....} ~
+
+\seealso{
+%% ~~objects to See Also as \code{\link{help}}, ~~~
+}
+\examples{
+##---- Should be DIRECTLY executable !! ----
+##-- ==>  Define data, use random,
+##--	or do  help(data=index)  for the standard data sets.
+
+## The function is currently defined as
+function(nil, panel_a, panel_b, mitogen, output = "terse"){
 # Given vectors of nil, TB antigen (panels A and B), and mitogen results
 # in spots, this function computes TSPOT qualitative interpretations.
 # The function uses the Oxford Immunotec North America criterion by default;
@@ -24,7 +84,7 @@ tspot.interp <- function(nil, panel_a, panel_b, mitogen, output = "terse"){
     )
 
     # Check for valid output argument
-    if(!(output %in% names(interp.table))){"An invalid output option was specified."}
+    if(!(output \%in\% names(interp.table))){"An invalid output option was specified."}
 
 
     # Check for equal vector lengths
@@ -54,7 +114,7 @@ tspot.interp <- function(nil, panel_a, panel_b, mitogen, output = "terse"){
            nil > 10] <- interp.table[1, output]
 
     result[is.na(result) &
-           panel.max %in% c(5, 6, 7)] <- interp.table[2, output]
+           panel.max \%in\% c(5, 6, 7)] <- interp.table[2, output]
 
     result[is.na(result) &
            panel.max >= 8] <- interp.table[3, output]
@@ -68,9 +128,9 @@ tspot.interp <- function(nil, panel_a, panel_b, mitogen, output = "terse"){
            mitogen < 20] <- interp.table[5, output]
 
     return(result)
+  }
 }
-
-
-# Development note: This algorithm is based off of the TSPOT.TB Package Insert from 
-# Oxford Immunotec (document ID looks to be PI-TB-US-V1).  
-
+% Add one or more standard keywords, see file 'KEYWORDS' in the
+% R documentation directory.
+\keyword{ ~kwd1 }
+\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
