@@ -1,15 +1,60 @@
 
 
-Fixes:
+
+Overview of what I'd ultimately like:
+One function per assay provides generic access to all of the interpretation
+functions for various purposes - the same function should be able to compute
+cross-sectional testing and serial testing under a variety of criteria.  
+
+For illustration:
+result.qft(tb, 
+           nil, 
+           mito, 
+           data, 
+           patient.id = NULL, 
+           test.seq = NULL,
+           criteria = "Cellestis")
+
+In the simplest case, the function only needs tb, nil and mito.  It regards
+these as cross-sectional results with one test per person, and calculates
+the results of each test based on the value passed to criteria.
+The criteria argument can be a vector of different criteria, which would
+make it easier to test risk-specific criteria.
+Cross-sec functions would return a single character vector of results.
+
+In the event of serial testing, users would pass a patient ID and test
+sequence to the function, which would then evaluate the tests serially
+under the given criteria.  Serial testing would return a data.frame with
+two vectors: a character vector for result (based on serial criteria), 
+and a character vector indicating stable results, conversions, and reversions.
+
+I'd also like a function to calculate bins from a variety of publications,
+and compute test-to-test binned result tables like we've done here.
+binres.qft(tbnil,
+           data,
+           patient.id = NULL,
+           test.seq = NULL)
+Again, the default functionality assumes a single test and just bins the
+TB antigen - nil results (returns an ordered factor).  Iff two and only two
+tests are submitted (grouped by patient.id, ordered by test.seq), the function
+returns a table with the binned results of the first test as the left margin
+and the binned results of the second test as the top margin.
+
+The major question, then, is how to structure this branching function
+structure.  It seems like the best way would be to have a single function
+with a subfunction for each criteria.  That could result in a fair amount of
+code repetition, however - I'd have to abstract as much as possible out into
+helper functions to keep maintenance sane.
+There'd also have to be some way to allow users to create their own criteria.
+And WTF should those criteria look like, anyway?
+
+
+
+
+
+
+Urgent:
  - UNIT TESTING
-
-New Features for Existing Functions:
- - Add an argument for TB - Nil for the TSPOT
-   This is more difficult than it seems because of the borderlines.  Would
-   have to create another version of the function without borderlines (which
-   is basically what the non-NA criteria are, I think)
-
- - Add an argument to specify different criteria sets - North Am vs Global
 
  - Check that all test inputs are positive.
 
@@ -22,7 +67,9 @@ New Functionality:
 
  - Programmatic access to the BCG World Atlas?
 
+ - Easy within-person variability analysis
 
+ - 
 
 Datasets:
  - Get permissions for:
