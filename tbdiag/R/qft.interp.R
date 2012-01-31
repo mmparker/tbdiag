@@ -150,22 +150,22 @@ qft.criteria.cellestis.aus <- function(qft.obj){
 
     
     # Set up the results vector
-    result <- rep(NA, times = length(nil)) 
+    result <- rep(NA, times = length(qft.obj$nil)) 
 
     # Compute the results
     # Indeterminate due to high nil
     result[is.na(result) &
-           nil + tol > 8.0] <- "Indeterminate - high nil"
+           qft.obj$nil + tol > 8.0] <- "Indeterminate - high nil"
 
     # Positive
     result[is.na(result) &
-           (tb - nil + tol > 0.35) & 
-           (tb - nil + tol > .25 * nil)] <- "Positive"
+           (qft.obj$tb - qft.obj$nil + tol > 0.35) & 
+           (qft.obj$tb - qft.obj$nil + tol > .25 * qft.obj$nil)] <- "Positive"
 
     # Negative
     result[is.na(result) & 
-           (tb - nil + tol < 0.35 | 
-            tb - nil + tol < .25 * nil)] <- "Negative"
+           (qft.obj$tb - qft.obj$nil + tol < 0.35 | 
+            qft.obj$tb - qft.obj$nil + tol < .25 * qft.obj$nil)] <- "Negative"
 
     # No indeterminate due to nil ~ mitogen
   
