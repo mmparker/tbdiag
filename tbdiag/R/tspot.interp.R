@@ -38,10 +38,10 @@ tspot.interp <- function(nil, panel_a, panel_b, mito,
     if(any(mito < 0)){warning("One or more mito values are negative - that probably shouldn't happen!")}
 
     # Check for non-integer results - warn if decimal
-    if(any(!is.wholenumber(nil))){warning("One or more nil values aren't integers - that probably shouldn't happen!  See ?is.integer for help.")}
-    if(any(!is.wholenumber(panel_a))){warning("One or more panel_a values aren't integers - that probably shouldn't happen!  See ?is.integer for help.")}
-    if(any(!is.wholenumber(panel_b))){warning("One or more panel_b values aren't integers - that probably shouldn't happen!  See ?is.integer for help.")}
-    if(any(!is.wholenumber(mito))){warning("One or more mito values aren't integers - that probably shouldn't happen!  See ?is.integer for help.")}
+    if(any(!is.wholenumber(nil))){warning("One or more nil values aren't integers - that probably shouldn't happen!")}
+    if(any(!is.wholenumber(panel_a))){warning("One or more panel_a values aren't integers - that probably shouldn't happen!")}
+    if(any(!is.wholenumber(panel_b))){warning("One or more panel_b values aren't integers - that probably shouldn't happen!")}
+    if(any(!is.wholenumber(mito))){warning("One or more mito values aren't integers - that probably shouldn't happen!")}
 
 
     # Censor to 20 spots
