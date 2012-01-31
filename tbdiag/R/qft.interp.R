@@ -87,7 +87,7 @@ qft.criteria <- function(interp.this){
 }
 
 
-qft.criteria.cellestis.usa <- function(qft.obj, output){
+qft.criteria.cellestis.usa <- function(qft.obj){
     # This method calculates the QFT interpretation based on
     # Cellestis' American criteria
 
@@ -132,7 +132,7 @@ qft.criteria.cellestis.usa <- function(qft.obj, output){
 
 
 
-qft.criteria.cellestis.aus <- function(qft.obj, output){
+qft.criteria.cellestis.aus <- function(qft.obj){
     # This method calculates the QFT interpretation based on
     # Cellestis' Australian criteria
 
