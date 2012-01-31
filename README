@@ -1,3 +1,20 @@
-This is the very beginnings of what will eventually be an R package designed to make working with TB diagnostics data easier for researchers.  At this point, it includes only two functions: one for interpreting the Cellestis Quantiferon (using North American standards, with an argument to take non-standard TB - Nil values) and the Oxford Immunotec T.SPOT (also using North American standards, not yet with a cutoff argument).
+This package provides the user with functions for working with TB diagnostics
+data.  At the moment, it includes two families of functions: one for the
+interpretation of Cellestis Quantiferon Gold In-Tube results, and one for 
+interpreting Oxford Immunotec T.SPOT results.  These function-families can
+interpret by the manufacturers' criteria for North America and at least one
+non-American country (i.e., one QFT criteria set excludes the nil/mitogen
+indeterminate and one T.SPOT criteria set excludes the borderline category).
+More criteria will be added shortly; users can also easily extend the functions
+by creating new S3 methods for the ___.criteria functions.
 
-I've compared the results of these functions to several thousand lab-reported Quantiferon and T.SPOT results, and hand-calculated the correct results when faced with discrepancies.  While I believe that the current versions of these functions are very robust, they are provided with no warranty and I strongly encourage users to investigate any unusual results (and report back!)
+
+The below applies to the master branch functions, not the more recent generics 
+branch.  A testing suite to ensure proper functioning is the next major feature
+I'm working on for this package.
+===============================
+I've compared the results of these functions to several thousand lab-reported 
+Quantiferon and T.SPOT results, and hand-calculated the correct results when 
+faced with discrepancies.  While I believe that the current versions of these 
+functions are very robust, they are provided with no warranty and I strongly 
+encourage users to investigate any unusual results (and report back!)
