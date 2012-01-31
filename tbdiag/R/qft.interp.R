@@ -22,24 +22,44 @@ qft.interp <- function(nil, tb, mito,
 #     if(!(output %in% names(interp.table))){
 #         "An invalid output option was specified."}
 
-    # Check for equal vector lengths
+    # Check for equal vector lengths - throw error if not equal
     if(any(!isTRUE(all.equal(length(nil), length(tb))),
            !isTRUE(all.equal(length(nil), length(mito)))
        )){stop(
     "The vectors of TB, nil, and mitogen values must all be the same length.")}
 
 
-    # Check for numeric results
+    # Check for numeric results - throw error if non-numeric
     if(any(!is.numeric(nil),
            !is.numeric(tb),
            !is.numeric(mito))){stop(
            "The vectors of TB, nil, and mitogen values must all be numeric.")}
 
 
+    # Check for positive results - warn if negatives
+    if(any(nil < 0)){warning("One or more nil values are negative - that probably shouldn't happen!")}
+    if(any(tb < 0)){warning("One or more tb values are negative - that probably shouldn't happen!")}
+    if(any(mito < 0)){warning("One or more mito values are negative - that probably shouldn't happen!")}
+
+
+    # Censor to 10
+    nil.cens <- nil
+    nil.cens[nil.cens > 10] <- 10
+    if(any(nil > 10)){warning("One more nil values were greater than 10 IU/mL and have been censored to 10 IU/mL.")}
+
+    tb.cens <- tb
+    tb.cens[tb.cens > 10] <- 10
+    if(any(tb > 10)){warning("One more tb values were greater than 10 IU/mL and have been censored to 10 IU/mL.")}
+    
+    mito.cens <- mito
+    mito.cens[mito.cens > 10] <- 10
+    if(any(mito > 10)){warning("One more mito values were greater than 10 IU/mL and have been censored to 10 IU/mL.")}
+
+
     # Set up the interpretation object
-    interp.this <- data.frame(nil = nil,
-                              tb = tb,
-                              mito = mito
+    interp.this <- data.frame(nil = nil.cens,
+                              tb = tb.cens,
+                              mito = mito.cens
     )                                
 
     # Set the class so that the generic function knows which method to call
