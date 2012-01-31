@@ -22,15 +22,18 @@ qft.interp <- function(nil, tb, mito,
 #         "An invalid output option was specified."}
 
     # Check for equal vector lengths
-    if(!isTRUE(all.equal(length(nil), length(tb))) |
-       !isTRUE(all.equal(length(nil), length(mito)))){stop(
-           "The vectors of TB, nil, and mitogen values must all be the same length.")}
-    
+    if(any(!isTRUE(all.equal(length(nil), length(tb))),
+           !isTRUE(all.equal(length(nil), length(mito)))
+       )){stop(
+    "The vectors of TB, nil, and mitogen values must all be the same length.")}
+
+
     # Check for numeric results
-    if(!isTRUE(is.numeric(nil) &
-               is.numeric(tb) &
-               is.numeric(mito))){stop(
-               "The vectors of TB, nil, and mitogen values must all be numeric.")}
+    if(any(!is.numeric(nil),
+           !is.numeric(tb),
+           !is.numeric(mito))){stop(
+           "The vectors of TB, nil, and mitogen values must all be numeric.")}
+
 
     # Set up the interpretation object
     interp.this <- data.frame(nil = nil,
