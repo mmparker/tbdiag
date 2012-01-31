@@ -81,7 +81,7 @@ qft.interp <- function(nil, tb, mito,
 }
 
 
-# Define the generic funciton
+# Define the generic function
 qft.criteria <- function(interp.this){
     UseMethod("qft.criteria", interp.this)
 }
@@ -90,6 +90,11 @@ qft.criteria <- function(interp.this){
 qft.criteria.cellestis.usa <- function(qft.obj){
     # This method calculates the QFT interpretation based on
     # Cellestis' American criteria
+
+    # Check that it has appropriately named variables
+    if(!all("nil" %in% names(qft.obj),
+            "tb" %in% names(qft.obj),
+            "mito" %in% names(qft.obj))){stop("The qft.obj passed to qft.criteria.cellestis.usa must have variables named nil, tb and mito.")
 
     # Floating point comparisons can be a problem here.
     # Instead of >=, define a small value and add it to the number 
@@ -102,27 +107,30 @@ qft.criteria.cellestis.usa <- function(qft.obj){
 
     
     # Set up the results vector
-    result <- rep(NA, times = length(nil)) 
+    result <- rep(NA, times = length(qft.obj$nil)) 
 
     # Compute the results
     # Indeterminate due to high nil
     result[is.na(result) &
-           nil + tol > 8.0] <- "Indeterminate - high nil"
+           qft.obj$nil + tol > 8.0] <- "Indeterminate - high nil"
 
     # Positive
     result[is.na(result) &
-           (tb - nil + tol > 0.35) & 
-           (tb - nil + tol > .25 * nil)] <- "Positive"
+           (qft.obj$tb - qft.obj$nil + tol > 0.35) & 
+           (qft.obj$tb - qft.obj$nil + tol > .25 * qft.obj$nil)] <- "Positive"
 
     # Negative
     result[is.na(result) & 
-           (tb - nil + tol < 0.35 | tb - nil + tol < .25 * nil) &
-           !(mito - nil + tol < 0.5)] <- "Negative"
+           (qft.obj$tb - qft.obj$nil + tol < 0.35 | 
+            qft.obj$tb - qft.obj$nil + tol < .25 * qft.obj$nil) &
+            !(qft.obj$mito - qft.obj$nil + tol < 0.5)] <- "Negative"
 
     # Indeterminate due to nil ~ mitogen
     result[is.na(result) &
-           ((tb - nil + tol < 0.35 | tb - nil + tol < .25 * nil) &
-            mito - nil + tol < 0.5)] <- "Indeterminate - mitogen too close to nil"
+           ((qft.obj$tb - qft.obj$nil + tol < 0.35 | 
+             qft.obj$tb - qft.obj$nil + tol < .25 * qft.obj$nil) &
+             qft.obj$mito - qft.obj$nil + tol < 0.5)] <- 
+                 "Indeterminate - mitogen too close to nil"
   
     return(result)
 
