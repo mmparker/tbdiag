@@ -8,7 +8,8 @@
 
 
 qft.interp <- function(nil, tb, mito,
-                       criteria = "cellestis.usa"){
+                       criteria = "cellestis.usa",
+                       output = "verbose"){
 
     # Given vectors of nil, TB antigen, and mitogen results in IU/mL,
     # this function computes QFT qualitative interpretations.  The function
@@ -45,7 +46,17 @@ qft.interp <- function(nil, tb, mito,
     class(interp.this) <- c("data.frame", criteria)
 
     # Call the generic function to apply the appropriate criteria
-    qft.criteria(interp.this)
+    res <- qft.criteria(interp.this)
+
+    # Pare down the output as requested
+    res.out <- if(output %in% "onechar"){substr(res, 1, 1)} else
+                  if(output %in% "terse"){gsub(res, 
+                                               pattern = " .*$", 
+                                               replace = "")} else 
+                     if(output %in% "verbose"){res}
+
+    return(res.out)
+
 
 }
 
@@ -60,22 +71,6 @@ qft.criteria.cellestis.usa <- function(qft.obj, output){
     # This method calculates the QFT interpretation based on
     # Cellestis' American criteria
 
-    # Set up the interpretation table with terse and verbose messages
-    interp.table <- data.frame(
-        onechar = c("I", "P", "N", "I"),
-        terse = c("Indeterminate", 
-                "Positive", 
-                "Negative", 
-                "Indeterminate"),
-        verbose = c("Indeterminate - high nil",
-                    "Positive", 
-                    "Negative",
-                    "Indeterminate - mitogen too close to nil"),
-        stringsAsFactors = FALSE
-    )
-    
-    output <- "verbose"
-
     # Floating point comparisons can be a problem here.
     # Instead of >=, define a small value and add it to the number 
     # being compared.
@@ -92,22 +87,22 @@ qft.criteria.cellestis.usa <- function(qft.obj, output){
     # Compute the results
     # Indeterminate due to high nil
     result[is.na(result) &
-           nil + tol > 8.0] <- interp.table[1, output]
+           nil + tol > 8.0] <- "Indeterminate - high nil"
 
     # Positive
     result[is.na(result) &
            (tb - nil + tol > 0.35) & 
-           (tb - nil + tol > .25 * nil)] <- interp.table[2, output]
+           (tb - nil + tol > .25 * nil)] <- "Positive"
 
     # Negative
     result[is.na(result) & 
            (tb - nil + tol < 0.35 | tb - nil + tol < .25 * nil) &
-           !(mito - nil + tol < 0.5)] <- interp.table[3, output]
+           !(mito - nil + tol < 0.5)] <- "Negative"
 
     # Indeterminate due to nil ~ mitogen
     result[is.na(result) &
            ((tb - nil + tol < 0.35 | tb - nil + tol < .25 * nil) &
-            mito - nil + tol < 0.5)] <- interp.table[4, output]
+            mito - nil + tol < 0.5)] <- "Indeterminate - mitogen too close to nil"
   
     return(result)
 
@@ -121,22 +116,6 @@ qft.criteria.cellestis.aus <- function(qft.obj, output){
     # This method calculates the QFT interpretation based on
     # Cellestis' Australian criteria
 
-    # Set up the interpretation table with terse and verbose messages
-    interp.table <- data.frame(
-        onechar = c("I", "P", "N", "I"),
-        terse = c("Indeterminate", 
-                "Positive", 
-                "Negative", 
-                "Indeterminate"),
-        verbose = c("Indeterminate - high nil",
-                    "Positive", 
-                    "Negative",
-                    "Indeterminate - mitogen too close to nil"),
-        stringsAsFactors = FALSE
-    )
-    
-    output <- "verbose"
-
     # Floating point comparisons can be a problem here.
     # Instead of >=, define a small value and add it to the number 
     # being compared.
@@ -153,17 +132,17 @@ qft.criteria.cellestis.aus <- function(qft.obj, output){
     # Compute the results
     # Indeterminate due to high nil
     result[is.na(result) &
-           nil + tol > 8.0] <- interp.table[1, output]
+           nil + tol > 8.0] <- "Indeterminate - high nil"
 
     # Positive
     result[is.na(result) &
            (tb - nil + tol > 0.35) & 
-           (tb - nil + tol > .25 * nil)] <- interp.table[2, output]
+           (tb - nil + tol > .25 * nil)] <- "Positive"
 
     # Negative
     result[is.na(result) & 
            (tb - nil + tol < 0.35 | 
-            tb - nil + tol < .25 * nil)] <- interp.table[3, output]
+            tb - nil + tol < .25 * nil)] <- "Negative"
 
     # No indeterminate due to nil ~ mitogen
   
