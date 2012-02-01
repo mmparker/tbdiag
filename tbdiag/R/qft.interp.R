@@ -9,18 +9,13 @@
 
 qft.interp <- function(nil, tb, mito,
                        criteria = "cellestis.usa",
-                       output = "verbose"){
+                       verbosity = "verbose"){
 
     # Given vectors of nil, TB antigen, and mitogen results in IU/mL,
     # this function computes QFT qualitative interpretations.  The function
     # uses the Cellestis USA criterion by default; other criteria
     # sets can be created as methods for the qft.criteria function.
 
-
-
-#     # Check for valid output argument
-#     if(!(output %in% names(interp.table))){
-#         "An invalid output option was specified."}
 
     # Check for equal vector lengths - throw error if not equal
     if(any(!isTRUE(all.equal(length(nil), length(tb))),
@@ -43,17 +38,9 @@ qft.interp <- function(nil, tb, mito,
 
 
     # Censor to 10
-    nil.cens <- nil
-    nil.cens[nil.cens > 10] <- 10
-    if(any(nil > 10)){warning("One more nil values were greater than 10 IU/mL and have been censored to 10 IU/mL.")}
-
-    tb.cens <- tb
-    tb.cens[tb.cens > 10] <- 10
-    if(any(tb > 10)){warning("One more tb values were greater than 10 IU/mL and have been censored to 10 IU/mL.")}
-    
-    mito.cens <- mito
-    mito.cens[mito.cens > 10] <- 10
-    if(any(mito > 10)){warning("One more mito values were greater than 10 IU/mL and have been censored to 10 IU/mL.")}
+    nil.cens <- qft.cens(nil)
+    tb.cens <- qft.cens(tb)
+    mito.cens <- qft.cens(mito)
 
 
     # Set up the interpretation object
@@ -69,11 +56,7 @@ qft.interp <- function(nil, tb, mito,
     res <- qft.criteria(interp.this)
 
     # Pare down the output as requested
-    res.out <- if(output %in% "onechar"){substr(res, 1, 1)} else
-                  if(output %in% "terse"){gsub(res, 
-                                               pattern = " .*$", 
-                                               replace = "")} else 
-                     if(output %in% "verbose"){res}
+    res.out <- trim.qft.output(res, verbosity)
 
     return(res.out)
 
@@ -176,4 +159,36 @@ qft.criteria.cellestis.aus <- function(qft.obj){
 
 
 
+# Helper function: censor values greater than 10
+qft.cens <- function(x){
+    if(any(x > 10)){
+        x.cens <- x
+        x.cens[x.cens > 10] <- 10
+        warning("One or more values were greater than 10 IU/mL and have been censored to 10 IU/mL.")
+        return(x.cens)
+    } else return(x)
+}
 
+
+# Helper function: trim output values to the requested verbosity
+trim.qft.output <- function(res, verbosity = "terse"){
+
+    # Check for a valid verbosity argument; if not valid, 
+    # default to terse and warn
+    if(!verbosity %in% c("onechar", "terse", "verbose")){
+        warning("'", verbosity, "' is not a valid choice for result verbosity; defaulting to 'terse'.")
+        verbosity <- "terse"
+    }
+
+    
+    # If verbosity is "onechar", output just the first character of result
+    if(verbosity %in% "onechar"){substr(res, 1, 1)} else
+
+        # If verbosity is "terse", just the first word
+        if(verbosity %in% "terse"){gsub(res, 
+                                        pattern = " .*$", 
+                                        replace = "")} else 
+
+            # If verbose, indeterminates indicate which criteria
+            if(verbosity %in% "verbose"){res}
+}
