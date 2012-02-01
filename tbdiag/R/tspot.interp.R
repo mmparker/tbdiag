@@ -76,11 +76,7 @@ tspot.interp <- function(nil, panel_a, panel_b, mito,
     res <- tspot.criteria(interp.this)
 
     # Pare down the output as requested
-    res.out <- if(output %in% "onechar"){substr(res, 1, 1)} else
-                  if(output %in% "terse"){gsub(res, 
-                                               pattern = " .*$", 
-                                               replace = "")} else 
-                     if(output %in% "verbose"){res}
+    res.out <- trim.output(res, verbosity)
 
     return(res.out)
 
