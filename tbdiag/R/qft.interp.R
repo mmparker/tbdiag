@@ -1,11 +1,8 @@
 
 
-
+################################################################################
 # Set up a coordinating script to check data and call the generic
 # criteria function
-
-
-
 
 qft.interp <- function(nil, tb, mito,
                        criteria = "cellestis.usa",
@@ -37,7 +34,7 @@ qft.interp <- function(nil, tb, mito,
     if(any(mito < 0)){warning("One or more mito values are negative - that probably shouldn't happen!")}
 
 
-    # Censor to 10
+    # Censor to 10 IU/mL
     nil.cens <- qft.cens(nil)
     tb.cens <- qft.cens(tb)
     mito.cens <- qft.cens(mito)
@@ -64,101 +61,24 @@ qft.interp <- function(nil, tb, mito,
 }
 
 
+
+
+
+
+################################################################################
 # Define the generic function
+# The criteria argument from qft.interp sets the class of interp.this,
+# which in turn determines which criteria set is dispatched by qft.criteria
 qft.criteria <- function(interp.this){
     UseMethod("qft.criteria", interp.this)
 }
 
 
-qft.criteria.cellestis.usa <- function(qft.obj){
-    # This method calculates the QFT interpretation based on
-    # Cellestis' American criteria
-
-    # Floating point comparisons can be a problem here.
-    # Instead of >=, define a small value and add it to the number 
-    # being compared.
-    # In essence, convert any left-hand value that's truly equal
-    # to the right-hand # value into one that is *greater* 
-    # than the right-hand value.
-    # This is the tolerance value used by all.equal().
-    tol <- .Machine$double.eps ^ 0.5
-
-    
-    # Set up the results vector
-    result <- rep(NA, times = length(qft.obj$nil)) 
-
-    # Compute the results
-    # Indeterminate due to high nil
-    result[is.na(result) &
-           qft.obj$nil + tol > 8.0] <- "Indeterminate - high nil"
-
-    # Positive
-    result[is.na(result) &
-           (qft.obj$tb - qft.obj$nil + tol > 0.35) & 
-           (qft.obj$tb - qft.obj$nil + tol > .25 * qft.obj$nil)] <- "Positive"
-
-    # Negative
-    result[is.na(result) & 
-           (qft.obj$tb - qft.obj$nil + tol < 0.35 | 
-            qft.obj$tb - qft.obj$nil + tol < .25 * qft.obj$nil) &
-            !(qft.obj$mito - qft.obj$nil + tol < 0.5)] <- "Negative"
-
-    # Indeterminate due to nil ~ mitogen
-    result[is.na(result) &
-           ((qft.obj$tb - qft.obj$nil + tol < 0.35 | 
-             qft.obj$tb - qft.obj$nil + tol < .25 * qft.obj$nil) &
-             qft.obj$mito - qft.obj$nil + tol < 0.5)] <- 
-                 "Indeterminate - mitogen too close to nil"
-  
-    return(result)
-
-}
 
 
 
 
-
-qft.criteria.cellestis.aus <- function(qft.obj){
-    # This method calculates the QFT interpretation based on
-    # Cellestis' Australian criteria
-
-    # Floating point comparisons can be a problem here.
-    # Instead of >=, define a small value and add it to the number 
-    # being compared.
-    # In essence, convert any left-hand value that's truly equal
-    # to the right-hand # value into one that is *greater* 
-    # than the right-hand value.
-    # This is the tolerance value used by all.equal().
-    tol <- .Machine$double.eps ^ 0.5
-
-    
-    # Set up the results vector
-    result <- rep(NA, times = length(qft.obj$nil)) 
-
-    # Compute the results
-    # Indeterminate due to high nil
-    result[is.na(result) &
-           qft.obj$nil + tol > 8.0] <- "Indeterminate - high nil"
-
-    # Positive
-    result[is.na(result) &
-           (qft.obj$tb - qft.obj$nil + tol > 0.35) & 
-           (qft.obj$tb - qft.obj$nil + tol > .25 * qft.obj$nil)] <- "Positive"
-
-    # Negative
-    result[is.na(result) & 
-           (qft.obj$tb - qft.obj$nil + tol < 0.35 | 
-            qft.obj$tb - qft.obj$nil + tol < .25 * qft.obj$nil)] <- "Negative"
-
-    # No indeterminate due to nil ~ mitogen
-  
-    return(result)
-
-}
-
-
-
-
+################################################################################
 # Helper function: censor values greater than 10
 qft.cens <- function(x){
     if(any(x > 10)){
@@ -170,6 +90,13 @@ qft.cens <- function(x){
 }
 
 
+
+
+
+
+
+
+################################################################################
 # Helper function: trim output values to the requested verbosity
 trim.qft.output <- function(res, verbosity = "terse"){
 
