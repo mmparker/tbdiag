@@ -30,33 +30,22 @@ and a character vector indicating stable results, conversions, and reversions.
 
 I'd also like a function to calculate bins from a variety of publications,
 and compute test-to-test binned result tables like we've done here.
+
 binres.qft(tbnil,
            data,
            patient.id = NULL,
            test.seq = NULL)
+
 Again, the default functionality assumes a single test and just bins the
 TB antigen - nil results (returns an ordered factor).  Iff two and only two
 tests are submitted (grouped by patient.id, ordered by test.seq), the function
 returns a table with the binned results of the first test as the left margin
 and the binned results of the second test as the top margin.
 
-The major question, then, is how to structure this branching function
-structure.  It seems like the best way would be to have a single function
-with a subfunction for each criteria.  That could result in a fair amount of
-code repetition, however - I'd have to abstract as much as possible out into
-helper functions to keep maintenance sane.
-There'd also have to be some way to allow users to create their own criteria.
-And WTF should those criteria look like, anyway?
-
-
-
-
 
 
 Urgent:
  - UNIT TESTING
-
- - Check that all test inputs are positive.
 
  - Add "test could not be interpreted" result to the functions.
 
