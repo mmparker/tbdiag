@@ -1,5 +1,5 @@
 
-
+################################################################################
 # Set up a coordinating function to check data and call the generic criteria
 # function
 
@@ -88,6 +88,7 @@ tspot.interp <- function(nil, panel_a, panel_b, mito,
 
 
 
+################################################################################
 tspot.criteria <- function(interp.this){
     UseMethod("tspot.criteria", interp.this)
 }
@@ -95,9 +96,16 @@ tspot.criteria <- function(interp.this){
 
 
 
-
-
+################################################################################
 # Function to check for integerness of spots - see ?is.integer for explanation
 is.wholenumber <- function(x, tol = .Machine$double.eps^0.5){
     abs(x - round(x)) < tol
 }
+
+
+
+################################################################################
+# Helper function to censor spot counts > 20
+
+
+
