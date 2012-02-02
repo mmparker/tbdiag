@@ -20,7 +20,7 @@ tspot.interp <- function(nil, panel_a, panel_b, mito,
            !isTRUE(all.equal(length(nil), length(panel_b))),
            !isTRUE(all.equal(length(nil), length(mito)))
        )){stop(
-    "The vectors of TB, nil, and mitogen values must all be the same length.")}
+    "The vectors of antigen, nil, and mitogen values must all be the same length.")}
 
 
     # Check for numeric results - throw error if non-numeric
@@ -31,7 +31,7 @@ tspot.interp <- function(nil, panel_a, panel_b, mito,
            "The vectors of TB, nil, and mitogen values must all be numeric.")}
 
 
-    # Check for positive results - warn if negatives
+    # Check that input values are positive - warn if negative
     if(any(nil < 0)){warning("One or more nil values are negative - that probably shouldn't happen!")}
     if(any(panel_a < 0)){warning("One or more panel_a values are negative - that probably shouldn't happen!")}
     if(any(panel_b < 0)){warning("One or more panel_b values are negative - that probably shouldn't happen!")}

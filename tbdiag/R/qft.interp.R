@@ -28,7 +28,7 @@ qft.interp <- function(nil, tb, mito,
            "The vectors of TB, nil, and mitogen values must all be numeric.")}
 
 
-    # Check for positive results - warn if negatives
+    # Check for positive values - warn if negatives
     if(any(nil < 0)){warning("One or more nil values are negative - that probably shouldn't happen!")}
     if(any(tb < 0)){warning("One or more tb values are negative - that probably shouldn't happen!")}
     if(any(mito < 0)){warning("One or more mito values are negative - that probably shouldn't happen!")}
