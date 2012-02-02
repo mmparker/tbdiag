@@ -62,6 +62,11 @@ New Functionality:
 
  - 
 
+
+Mo Betta Code:
+ - use pmax for TSPOT max-spot calculations
+
+
 Datasets:
  - Get permissions for:
    - Veerapathran et al 2008
