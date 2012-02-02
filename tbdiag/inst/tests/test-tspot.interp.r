@@ -139,7 +139,10 @@ expect_that(tspot.cens(20 + tol), equals(20))
 # tspot.interp returns a vector of acceptable results
 test_that("tspot.interp returns a vector of acceptable results", {
 
-expect_that(tspot.interp(1:10, 1:10, 1:10, 1:10), is_a("character"))
+expect_that(tspot.interp(nil = 1:10, 
+                         panel_a = 1:10, 
+                         panel_b = 1:10, 
+                         mito = 1:10), is_a("character"))
 
 })
 
