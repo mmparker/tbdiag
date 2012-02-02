@@ -45,21 +45,10 @@ tspot.interp <- function(nil, panel_a, panel_b, mito,
 
 
     # Censor to 20 spots
-    nil.cens <- nil
-    nil.cens[nil.cens > 20] <- 20
-    if(any(nil > 20)){warning("One or more nil values were greater than 20 spots and have been censored to 20 spots.")}
-
-    panel_a.cens <- panel_a
-    panel_a.cens[panel_a.cens > 20] <- 20
-    if(any(panel_a > 20)){warning("One or more panel_a values were greater than 20 spots and have been censored to 20 spots.")}
-
-    panel_b.cens <- panel_b
-    panel_b.cens[panel_b.cens > 20] <- 20
-    if(any(panel_b > 20)){warning("One or more panel_b values were greater than 20 spots and have been censored to 20 spots.")}
-
-    mito.cens <- mito
-    mito.cens[mito.cens > 20] <- 20
-    if(any(mito > 20)){warning("One or more mito values were greater than 20 spots and have been censored to 20 spots.")}
+    nil.cens <- tspot.cens(nil)
+    panel_a.cens <- tspot.cens(panel_a)
+    panel_b.cens <- tspot.cens(panel_b)
+    mito.cens <- tspot.cens(mito)
 
 
     # Set up the interpretation object
@@ -102,6 +91,11 @@ is.wholenumber <- function(x, tol = .Machine$double.eps^0.5){
 
 ################################################################################
 # Helper function to censor spot counts > 20
-
-
-
+tspot.cens <- function(x){
+    if(any(x > 20)){
+        x.cens <- x
+        x.cens[x.cens > 20] <- 20
+        warning("One or more values were greater than 20 spots and have been censored to 20 spots.")
+        return(x.cens)
+    } else return(x)
+}
