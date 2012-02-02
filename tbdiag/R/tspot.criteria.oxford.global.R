@@ -1,5 +1,5 @@
 
-tspot.criteria.oxford.global <- function(interp.this){
+tspot.criteria.oxford.global <- function(tspot.obj){
 
     
     # Set up the results vector
