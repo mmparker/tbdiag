@@ -32,4 +32,3 @@ tspot.criteria.oxford.usa <- function(tspot.obj){
     return(result)
 }
 
-

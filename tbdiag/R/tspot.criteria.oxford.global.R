@@ -16,9 +16,6 @@ tspot.criteria.oxford.global <- function(tspot.obj){
            tspot.obj$nil > 10] <- "Invalid - high nil"
 
     result[is.na(result) &
-           panel.max %in% c(5, 6, 7)] <- "Borderline"
-
-    result[is.na(result) &
            panel.max >= 6] <- "Positive"
 
     result[is.na(result) &
