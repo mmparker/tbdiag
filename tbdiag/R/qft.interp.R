@@ -6,7 +6,8 @@
 
 qft.interp <- function(nil, tb, mito,
                        criteria = "cellestis.usa",
-                       verbosity = "verbose"){
+                       verbosity = "verbose",
+                       ...){
 
     # Given vectors of nil, TB antigen, and mitogen results in IU/mL,
     # this function computes QFT qualitative interpretations.  The function
