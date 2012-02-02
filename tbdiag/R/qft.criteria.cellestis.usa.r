@@ -26,20 +26,20 @@ qft.criteria.cellestis.usa <- function(qft.obj){
 
     # Positive
     result[is.na(result) &
-           (qft.obj$tb - qft.obj$nil + tol > 0.35) & 
-           (qft.obj$tb - qft.obj$nil + tol > .25 * qft.obj$nil)] <- "Positive"
+           ((qft.obj$tb - qft.obj$nil) + tol > 0.35) & 
+           ((qft.obj$tb - qft.obj$nil) + tol > .25 * qft.obj$nil)] <- "Positive"
 
     # Negative
     result[is.na(result) & 
-           (qft.obj$tb - qft.obj$nil + tol < 0.35 | 
-            qft.obj$tb - qft.obj$nil + tol < .25 * qft.obj$nil) &
-            !(qft.obj$mito - qft.obj$nil + tol < 0.5)] <- "Negative"
+           ((qft.obj$tb - qft.obj$nil) + tol < 0.35 | 
+            (qft.obj$tb - qft.obj$nil) + tol < .25 * qft.obj$nil) &
+            !((qft.obj$mito - qft.obj$nil) + tol < 0.5)] <- "Negative"
 
     # Indeterminate due to nil ~ mitogen
     result[is.na(result) &
-           ((qft.obj$tb - qft.obj$nil + tol < 0.35 | 
-             qft.obj$tb - qft.obj$nil + tol < .25 * qft.obj$nil) &
-             qft.obj$mito - qft.obj$nil + tol < 0.5)] <- 
+           (((qft.obj$tb - qft.obj$nil) + tol < 0.35 | 
+             (qft.obj$tb - qft.obj$nil) + tol < .25 * qft.obj$nil) &
+             (qft.obj$mito - qft.obj$nil) + tol < 0.5)] <- 
                  "Indeterminate - mitogen too close to nil"
   
     return(result)
