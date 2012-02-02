@@ -16,10 +16,7 @@ qft.interp <- function(nil, tb, mito,
 
 
     # Check for equal vector lengths - throw error if not equal
-    if(any(!isTRUE(all.equal(length(nil), length(tb))),
-           !isTRUE(all.equal(length(nil), length(mito)))
-       )){stop(
-    "The vectors of TB, nil, and mitogen values must all be the same length.")}
+    equal.lengths(nil, tb, mito, ...)
 
 
     # Check for numeric results - throw error if non-numeric
