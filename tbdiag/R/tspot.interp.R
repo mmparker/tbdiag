@@ -5,7 +5,7 @@
 
 tspot.interp <- function(nil, panel_a, panel_b, mito,
                          criteria = "oxford.usa",
-                         output = "terse"){
+                         verbosity = "terse"){
 
 
     # Given vectors of nil, TB antigen (panels A and B), and mitogen results
