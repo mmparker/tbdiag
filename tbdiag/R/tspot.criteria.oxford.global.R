@@ -6,9 +6,10 @@ tspot.criteria.oxford.global <- function(tspot.obj){
     result <- rep(NA, times = length(tspot.obj&nil)) 
 
     # Identify the maximum of Panel A - Nil and Panel B - Nil
-    panel.max <- ifelse((panel_a - tspot.obj$nil) > (panel_b - tspot.obj$nil),
-                        yes = (panel_a - tspot.obj$nil), 
-                        no = (panel_b - tspot.obj$nil)
+    panel.max <- ifelse((tspot.obj$panel_a - tspot.obj$nil) > 
+                             (tspot.obj$panel_b - tspot.obj$nil),
+                         yes = (tspot.obj$panel_a - tspot.obj$nil), 
+                         no = (tspot.obj$panel_b - tspot.obj$nil)
     )
 
     # Compute the results
@@ -20,11 +21,11 @@ tspot.criteria.oxford.global <- function(tspot.obj){
 
     result[is.na(result) &
            panel.max <= 5 &
-           mitogen >= 20] <- "Negative"
+           tspot.obj$mito >= 20] <- "Negative"
 
     result[is.na(result) &
            panel.max <= 4 &
-           mitogen < 20] <- "Invalid - low mitogen"
+           tspot.obj$mito < 20] <- "Invalid - low mitogen"
 
     return(result)
 }
