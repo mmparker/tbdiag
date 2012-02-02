@@ -19,18 +19,13 @@ In the simplest case, the function only needs tb, nil and mito.  It regards
 these as cross-sectional results with one test per person, and calculates
 the results of each test based on the value passed to criteria.
 
+For more complicated criteria, additional vectors can be passed to the argument
+and subsequently dispatched to the criteria.  The ETL* function could build a 
+dynamic data.frame of the submitted variables, pass them on to the dispatch
+function, and on further to the appropriate criteria-evaluation function.
 
-# This doesn't jive with S3 methods - shit!  Would it work with S4?
-# More generally, how do I pass additional data to criteria sets that might
-# want them (e.g., country of birth or exposure or...)  
-# Can I just add a '...' to accept additional arguments and pass that blithely
-# on to criteria that want more than nil/tb/mito?  Sounds reasonable.
-The criteria argument can be a vector of different criteria, which would
-make it easier to test risk-specific criteria.
-Cross-sec functions would return a single character vector of results.
-
-In the event of serial testing, users would pass a patient ID and test
-sequence to the function, which would then evaluate the tests serially
+For example, in the event of serial testing, users would pass a patient ID 
+and test sequence to the function, which would then evaluate the tests serially
 under the given criteria.  Serial testing would return a data.frame with
 two vectors: a character vector for result (based on serial criteria), 
 and a character vector indicating stable results, conversions, and reversions.
