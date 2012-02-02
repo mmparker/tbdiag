@@ -4,7 +4,7 @@ Title: Functions for tuberculosis diagnostics research
 Version: 0.1
 Date: 2011-05-26
 Author: Matt Parker
-Maintainer: Matt Parker (mattmparker@gmail.com)
+Maintainer: Matt Parker <mattmparker@gmail.com>
 Description: This package contains two functions for the interpretation of 
     interferon-gamma release assays (the Cellestis Quantiferon Gold In-Tube and
     the Oxford Immunotec TSPOT.TB).  Both of these functions currently use the 
