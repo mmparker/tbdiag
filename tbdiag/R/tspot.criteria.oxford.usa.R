@@ -12,23 +12,56 @@ tspot.criteria.oxford.usa <- function(tspot.obj){
                          no = (tspot.obj$panel_b - tspot.obj$nil)
     )
 
-    # Compute the results
-    result[is.na(result) &
-           tspot.obj$nil > 10] <- "Invalid - high nil"
+    # For ease of reading criteria, set up a flag for each of the TSPOT
+    # criteria
+    # Nil is high
+    high.nil <- tspot.obj$nil > 10
 
-    result[is.na(result) &
-           panel.max %in% c(5, 6, 7)] <- "Borderline"
+    # Antigen is in borderline territory
+    border.spots <- panel.max %in% c(5, 6, 7)
 
-    result[is.na(result) &
-           panel.max >= 8] <- "Positive"
+    # Antigen is in positive territory
+    pos.spots <- panel.max >= 8
 
-    result[is.na(result) &
-           panel.max <= 4 &
-           tspot.obj$mito >= 20] <- "Negative"
+    # Mitogen is low
+    low.mito <- tspot.obj$mito < 20
 
-    result[is.na(result) &
-           panel.max <= 4 &
-           tspot.obj$mito < 20] <- "Invalid - low mitogen"
+
+    # Positive
+    result[border.spots %in% FALSE &
+           pos.spots %in% TRUE &
+           high.nil %in% FALSE &
+           low.mito %in% c(TRUE, FALSE)] <- "Positive"
+
+    # Borderline
+    result[border.spots %in% TRUE &
+           pos.spots %in% FALSE &
+           high.nil %in% FALSE &
+           low.mito %in% c(TRUE, FALSE)] <- "Borderline"
+
+
+    # Negative
+    result[border.spots %in% FALSE &
+           pos.spots %in% FALSE &
+           high.nil %in% FALSE &
+           low.mito %in% FALSE] <- "Negative"
+
+
+    # High nil
+    result[border.spots %in% c(TRUE, FALSE) &
+           pos.spots %in% c(TRUE, FALSE) &
+           high.nil %in% TRUE &
+           low.mito %in% c(TRUE, FALSE)] <- "Invalid - high nil"
+
+
+    # Low mito
+    result[border.spots %in% FALSE &
+           pos.spots %in% FALSE &
+           high.nil %in% FALSE &
+           low.mito %in% TRUE] <- "Invalid - low mito"
+
+
+
 
     return(result)
 }
