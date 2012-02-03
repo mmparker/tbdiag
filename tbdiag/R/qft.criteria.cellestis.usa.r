@@ -22,12 +22,12 @@ qft.criteria.cellestis.usa <- function(qft.obj){
     # Compute the results
     # Indeterminate due to high nil
     result[is.na(result) &
-           qft.obj$nil + tol > 8.0] <- "Indeterminate - high nil"
+           qft.obj$nil + tol >= 8.0] <- "Indeterminate - high nil"
 
     # Positive
     result[is.na(result) &
-           ((qft.obj$tb - qft.obj$nil) + tol > 0.35) & 
-           ((qft.obj$tb - qft.obj$nil) + tol > .25 * qft.obj$nil)] <- "Positive"
+          ((qft.obj$tb - qft.obj$nil) + tol >= 0.35) & 
+          ((qft.obj$tb - qft.obj$nil) + tol >= .25 * qft.obj$nil)] <- "Positive"
 
     # Negative
     result[is.na(result) & 
