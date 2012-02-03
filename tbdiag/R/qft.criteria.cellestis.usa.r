@@ -16,32 +16,60 @@ qft.criteria.cellestis.usa <- function(qft.obj){
     tol <- .Machine$double.eps ^ 0.5
 
     
+################################################################################
     # Set up the results vector
     result <- rep(NA, times = length(qft.obj$nil)) 
 
-    # Compute the results
-    # Indeterminate due to high nil
-    result[is.na(result) &
-           qft.obj$nil + tol >= 8.0] <- "Indeterminate - high nil"
 
+
+################################################################################
+    # For ease of reading criteria, set up a flag for each of the QFT
+    # flowchart criteria
+    # TB - Nil >= 0.35
+    tbnildiff.abs <- (qft.obj$tb - qft.obj$nil) + tol >= 0.35 
+
+    # TB - Nil >= 0.25*Nil
+    tbnildiff.rel <- (qft.obj$tb - qft.obj$nil) + tol >= (.25 * qft.obj$nil)
+
+    # Nil > 8
+    highnil <- qft.obj$nil + tol >= 8.0
+
+    # Mito - Nil < 0.50
+    mitonildiff <- (qft.obj$mito - qft.obj$nil) + tol < 0.5
+
+
+
+################################################################################
+    # Compute the results
+    
     # Positive
-    result[is.na(result) &
-          ((qft.obj$tb - qft.obj$nil) + tol >= 0.35) & 
-          ((qft.obj$tb - qft.obj$nil) + tol >= .25 * qft.obj$nil)] <- "Positive"
+    result[tbnildiff.abs %in% TRUE &
+           tbnildiff.rel %in% TRUE &
+           highnil %in% FALSE &
+           mitonildiff %in% c(TRUE, FALSE)] <- "Positive"
 
     # Negative
-    result[is.na(result) & 
-           ((qft.obj$tb - qft.obj$nil) + tol < 0.35 | 
-            (qft.obj$tb - qft.obj$nil) + tol < .25 * qft.obj$nil) &
-            !((qft.obj$mito - qft.obj$nil) + tol < 0.5)] <- "Negative"
+    # TB - Nil is less than 0.35 OR TB - Nil is greater than 0.35, but less
+    # than 0.25% of Nil
+    result[(tbnildiff.abs %in% FALSE |
+           (tbnildiff.abs %in% TRUE & tbnildiff.rel %in% FALSE)) &
+           highnil %in% FALSE &
+           mitonildiff %in% FALSE] <- "Negative"
 
-    # Indeterminate due to nil ~ mitogen
-    result[is.na(result) &
-           (((qft.obj$tb - qft.obj$nil) + tol < 0.35 | 
-             (qft.obj$tb - qft.obj$nil) + tol < .25 * qft.obj$nil) &
-             (qft.obj$mito - qft.obj$nil) + tol < 0.5)] <- 
-                 "Indeterminate - mitogen too close to nil"
-  
+    # Indeterminate - high nil
+    result[tbnildiff.abs %in% c(TRUE, FALSE) &
+           tbnildiff.rel %in% c(TRUE, FALSE) &
+           highnil %in% TRUE &
+           mitonildiff %in% c(TRUE, FALSE)] <- "Indeterminate - high nil"
+
+    # Indeterminate - mito too close to nil
+    result[(tbnildiff.abs %in% FALSE |
+           (tbnildiff.abs %in% TRUE & tbnildiff.rel %in% FALSE)) &
+           highnil %in% FALSE &
+           mitonildiff %in% TRUE] <- "Indeterminate - mitogen too close to nil"
+
+
+
     return(result)
 
 }
