@@ -151,7 +151,7 @@ expect_that(qft.criteria.cellestis.usa(data.frame(nil = 8.00,
 expect_that(qft.criteria.cellestis.usa(data.frame(nil = 8.00 - tol, 
                                       tb = 0.01, 
                                       mito = 10)), 
-            matches("Negative")
+            matches("Indeterminate - high nil")
 )
 
 expect_that(qft.criteria.cellestis.usa(data.frame(nil = 8.00 + tol, 
