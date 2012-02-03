@@ -1,12 +1,13 @@
 
+
 ################################################################################
 # Set up a coordinating function to check data and call the generic criteria
 # function
 
 tspot.interp <- function(nil, panel_a, panel_b, mito,
                          criteria = "oxford.usa",
-                         verbosity = "terse"){
-
+                         verbosity = "terse",
+                         ...){
 
     # Given vectors of nil, TB antigen (panels A and B), and mitogen results
     # in spots, this function computes TSPOT qualitative interpretations.
@@ -16,11 +17,7 @@ tspot.interp <- function(nil, panel_a, panel_b, mito,
 
 
     # Check for equal vector lengths - throw error if not equal
-    if(any(!isTRUE(all.equal(length(nil), length(panel_a))),
-           !isTRUE(all.equal(length(nil), length(panel_b))),
-           !isTRUE(all.equal(length(nil), length(mito)))
-       )){stop(
-    "The vectors of antigen, nil, and mitogen values must all be the same length.")}
+    equal.lengths(nil, panel_a, panel_b, mito)
 
 
     # Check for numeric results - throw error if non-numeric
