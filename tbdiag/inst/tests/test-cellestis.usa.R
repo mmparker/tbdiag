@@ -1,5 +1,9 @@
 
 
+# Set a tolerance for numeric comparisons
+tol <- .Machine$double.eps ^ 0.5
+
+
 ################################################################################
 # Standard negatives
 test_that("Typical results for negatives are returned as negatives", {
