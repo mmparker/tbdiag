@@ -56,9 +56,6 @@ This function is provided purely as a convenience and is not a replacement for m
 \code{\link{tspot.interp}} for TSPOT.TB interpretation.
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
