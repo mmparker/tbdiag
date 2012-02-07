@@ -32,7 +32,7 @@ qft.criteria.cellestis.usa <- function(qft.obj){
     tbnildiff.rel <- (qft.obj$tb - qft.obj$nil) + tol >= (.25 * qft.obj$nil)
 
     # Nil > 8
-    highnil <- qft.obj$nil + tol >= 8.0
+    highnil <- qft.obj$nil > 8.0
 
     # Mito - Nil < 0.50
     mitonildiff <- (qft.obj$mito - qft.obj$nil) + tol < 0.5

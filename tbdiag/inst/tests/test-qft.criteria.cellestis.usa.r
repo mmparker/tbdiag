@@ -93,14 +93,14 @@ expect_that(qft.criteria.cellestis.usa(data.frame(nil = 4.00,
 test_that("Typical results for high-nil indeterminates are returned as high-nil indeterminates", {
 
 # Nil over 8, everything else standard
-expect_that(qft.criteria.cellestis.usa(data.frame(nil = 8.00, 
+expect_that(qft.criteria.cellestis.usa(data.frame(nil = 8.01, 
                                       tb = 0.01, 
                                       mito = 10)), 
             matches("Indeterminate - high nil")
 )
 
 # Would be positive if nil weren't over 8
-expect_that(qft.criteria.cellestis.usa(data.frame(nil = 8.00, 
+expect_that(qft.criteria.cellestis.usa(data.frame(nil = 8.01, 
                                       tb = 11.00, 
                                       mito = 10)), 
             matches("Indeterminate - high nil")
@@ -142,29 +142,24 @@ expect_that(qft.criteria.cellestis.usa(data.frame(nil = 5.00,
 test_that("Results are correct in the presence of floating point comparison uncertainty", {
 
 # Nil ~ 8.00
-expect_that(qft.criteria.cellestis.usa(data.frame(nil = 8.00, 
+expect_that(qft.criteria.cellestis.usa(data.frame(nil = 8.01, 
                                       tb = 0.01, 
                                       mito = 10)), 
             matches("Indeterminate - high nil")
 )
 
-expect_that(qft.criteria.cellestis.usa(data.frame(nil = 8.00 - tol, 
+expect_that(qft.criteria.cellestis.usa(data.frame(nil = 8.01 - tol, 
                                       tb = 0.01, 
                                       mito = 10)), 
             matches("Indeterminate - high nil")
 )
 
-expect_that(qft.criteria.cellestis.usa(data.frame(nil = 8.00 + tol, 
+expect_that(qft.criteria.cellestis.usa(data.frame(nil = 8.01 + tol, 
                                       tb = 0.01, 
                                       mito = 10)), 
             matches("Indeterminate - high nil")
 )
 
-expect_that(qft.criteria.cellestis.usa(data.frame(nil = 32 / 4, 
-                                      tb = 0.01, 
-                                      mito = 10)), 
-            matches("Indeterminate - high nil")
-)
 
 
 # tb - nil ~ 0.35
