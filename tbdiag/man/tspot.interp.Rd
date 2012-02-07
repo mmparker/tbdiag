@@ -40,7 +40,7 @@ Other arguments passed to the criteria-evaluation function chosen by the "criter
 The function returns a vector of qualitative results.  The verbosity of results depends on the argument passed to "verbosity":
 \item{onechar }{Returns a single character indicating the result (N for Negative, B for Borderline, P for Positive, I for Indeterminate).}
 \item{terse }{Returns a single word indicating the result (Negative, Borderline, Positive, Indeterminate).}
-\item{verbose }{Returns the same results as "terse", with the addition of a short comment indicating the reason for an "Indeterminate" result.
+\item{verbose }{Returns the same results as "terse", with the addition of a short comment indicating the reason for an "Indeterminate" result.}
 }
 \references{
 Oxford Immunotec <http://www.oxfordimmunotec.com/>
