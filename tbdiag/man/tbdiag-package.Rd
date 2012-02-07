@@ -12,8 +12,8 @@ This package provides functions to assist researchers working in the field of tu
 \tabular{ll}{
 Package: \tab tbdiag\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2011-05-26\cr
+Version: \tab 0.1\cr
+Date: \tab 2012-01-06\cr
 License: \tab MIT\cr
 LazyLoad: \tab yes\cr
 }
