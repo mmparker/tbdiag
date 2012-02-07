@@ -2,6 +2,7 @@
 Urgent:
  - Add "test could not be interpreted" result to the functions.
 
+ - Write tests for equal.lengths()
 
 New Functionality:
  - Additional IGRA criteria sets
