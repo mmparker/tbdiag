@@ -6,7 +6,7 @@
 tbdiag: utilities for tuberculosis diagnostics research
 }
 \description{
-This package provides utilities for researchers working in the field of tuberculosis diagnostics.  At the moment, the utilities are functions for the interpretation of the commercial inteferon-gamma release assays the Cellestis Quantiferon and the Oxford Immunotec TSPOT.TB.  Additional suggestions welcome.
+This package provides functions to assist researchers working in the field of tuberculosis diagnostics.  Functions for the interpretation of two popular interferon-gamma release assays are provided, and additional functionality is planned.
 }
 \details{
 \tabular{ll}{
