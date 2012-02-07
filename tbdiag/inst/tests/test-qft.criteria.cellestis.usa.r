@@ -229,14 +229,14 @@ expect_that(qft.criteria.cellestis.usa(data.frame(nil = 0.50 - tol,
 
 ################################################################################
 # Results match known data
-load(file.path("..", "..", "data", "dorman2012.qfts.rdata"))
+load(file.path("..", "..", "data", "test.qfts.rdata"))
 
 # Compute results
-fun.result <- trim.output(qft.criteria.cellestis.usa(dorman2012.qfts), "terse")
+fun.result <- trim.output(qft.criteria.cellestis.usa(test.qfts), "terse")
 
 # Compare to lab results
 test_that("qft.criteria.cellestis.usa results exactly match original lab results from Dorman et al. 2012", {
 
-expect_that(all.equal(dorman2012.qfts$lab.result, fun.result), is_true())
+expect_that(all.equal(test.qfts$lab.result, fun.result), is_true())
 
 })
