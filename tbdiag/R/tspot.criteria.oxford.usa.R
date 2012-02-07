@@ -58,7 +58,7 @@ tspot.criteria.oxford.usa <- function(tspot.obj){
     result[border.spots %in% FALSE &
            pos.spots %in% FALSE &
            high.nil %in% FALSE &
-           low.mito %in% TRUE] <- "Invalid - low mito"
+           low.mito %in% TRUE] <- "Invalid - low mitogen"
 
 
 
