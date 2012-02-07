@@ -1,70 +1,20 @@
 
-
-
-Overview of what I'd ultimately like:
-One function per assay provides generic access to all of the interpretation
-functions for various purposes - the same function should be able to compute
-cross-sectional testing and serial testing under a variety of criteria.  
-
-For illustration:
-result.qft(tb, 
-           nil, 
-           mito, 
-           data, 
-           patient.id = NULL, 
-           test.seq = NULL,
-           criteria = "Cellestis")
-
-In the simplest case, the function only needs tb, nil and mito.  It regards
-these as cross-sectional results with one test per person, and calculates
-the results of each test based on the value passed to criteria.
-
-For more complicated criteria, additional vectors can be passed to the argument
-and subsequently dispatched to the criteria.  The ETL* function could build a 
-dynamic data.frame of the submitted variables, pass them on to the dispatch
-function, and on further to the appropriate criteria-evaluation function.
-
-For example, in the event of serial testing, users would pass a patient ID 
-and test sequence to the function, which would then evaluate the tests serially
-under the given criteria.  Serial testing would return a data.frame with
-two vectors: a character vector for result (based on serial criteria), 
-and a character vector indicating stable results, conversions, and reversions.
-
-I'd also like a function to calculate bins from a variety of publications,
-and compute test-to-test binned result tables like we've done here.
-
-binres.qft(tbnil,
-           data,
-           patient.id = NULL,
-           test.seq = NULL)
-
-Again, the default functionality assumes a single test and just bins the
-TB antigen - nil results (returns an ordered factor).  Iff two and only two
-tests are submitted (grouped by patient.id, ordered by test.seq), the function
-returns a table with the binned results of the first test as the left margin
-and the binned results of the second test as the top margin.
-
-
-
 Urgent:
- - UNIT TESTING
-
  - Add "test could not be interpreted" result to the functions.
 
 
 New Functionality:
+ - Additional IGRA criteria sets
+
+ - Serial criteria 
+
  - Given the numerous factors involved in interpreting TST results, is it 
    feasible to code a TST interpretation function?
 
  - Programmatic access to the BCG World Atlas?
 
- - Easy within-person variability analysis
+ - Easier within-person variability analysis
 
- - 
-
-
-Mo Betta Code:
- - use pmax for TSPOT max-spot calculations
 
 
 Datasets:
