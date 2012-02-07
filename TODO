@@ -4,6 +4,8 @@ Urgent:
 
  - Write tests for equal.lengths()
 
+ - Better documentation (Roxygen?)
+
 New Functionality:
  - Additional IGRA criteria sets
 
