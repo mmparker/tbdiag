@@ -2,15 +2,14 @@ Package: tbdiag
 Type: Package
 Title: Functions for tuberculosis diagnostics research
 Version: 0.1
-Date: 2011-05-26
+Date: 2012-02-06
 Author: Matt Parker
 Maintainer: Matt Parker <mattmparker@gmail.com>
-Description: This package contains two functions for the interpretation of 
-    interferon-gamma release assays (the Cellestis Quantiferon Gold In-Tube and
-    the Oxford Immunotec TSPOT.TB).  Both of these functions currently use the 
-    North American criteria, but the addition of other criteria is planned.  
-    Suggestions for other utilities are gratefully accepted.
+Description: This package provides functions to assist researchers working in 
+    the field of tuberculosis diagnostics.  Functions for the interpretation of
+    two popular interferon-gamma release assays are provided, and additional
+    functionality is planned.
 License: MIT
-URL: https://github.com/mmparker/tbdiagnostics
+URL: https://github.com/mmparker/tbdiag
 LazyLoad: yes
 Depends:
