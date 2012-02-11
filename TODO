@@ -2,8 +2,6 @@
 Urgent:
  - Add "test could not be interpreted" result to the functions.
 
- - Write tests for equal.lengths()
-
  - Better documentation (Roxygen?)
 
 New Functionality:
