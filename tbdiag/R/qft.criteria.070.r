@@ -4,7 +4,7 @@
 ################################################################################
 # The default Cellestis USA criteria with an increased TB-Nil threshold
 
-qft.criteria.cellestis.usa <- function(qft.obj){
+qft.criteria.070 <- function(qft.obj){
     # This method calculates the QFT interpretation based on
     # Cellestis' American criteria with a 0.70 IU/mL cutoff instead of the
     # default 0.35 IU/mL cutoff
