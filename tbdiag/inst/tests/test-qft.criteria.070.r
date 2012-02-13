@@ -24,7 +24,7 @@ expect_that(qft.criteria.070(data.frame(nil = 0.01,
 
 # Slightly higher
 expect_that(qft.criteria.070(data.frame(nil = 0.50, 
-                                        tb = 0.84, 
+                                        tb = 1.19, 
                                         mito = 10)), 
             matches("Negative")
 )
@@ -59,14 +59,14 @@ test_that("Typical results for positives are returned as positives", {
 
 # Borderline
 expect_that(qft.criteria.070(data.frame(nil = 0.01, 
-                                        tb = 0.36, 
+                                        tb = 0.71, 
                                         mito = 10)), 
             matches("Positive")
 )
 
 # Slightly higher
 expect_that(qft.criteria.070(data.frame(nil = 0.50, 
-                                        tb = 0.85, 
+                                        tb = 1.20, 
                                         mito = 10)), 
             matches("Positive")
 )
@@ -164,19 +164,19 @@ expect_that(qft.criteria.070(data.frame(nil = 8.01 + tol,
 
 # tb - nil ~ 0.70
 expect_that(qft.criteria.070(data.frame(nil = 0.13, 
-                                        tb = 0.48, 
+                                        tb = 0.83, 
                                         mito = 10)), 
             matches("Positive")
 )
 
 expect_that(qft.criteria.070(data.frame(nil = 0.13 - tol, 
-                                        tb = 0.48, 
+                                        tb = 0.83, 
                                         mito = 10)), 
             matches("Positive")
 )
 
 expect_that(qft.criteria.070(data.frame(nil = 0.13 + tol, 
-                                        tb = 0.48, 
+                                        tb = 0.83, 
                                         mito = 10)), 
             matches("Positive")
 )
@@ -184,20 +184,20 @@ expect_that(qft.criteria.070(data.frame(nil = 0.13 + tol,
 
 
 # tb - nil ~ 0.25*nil
-expect_that(qft.criteria.070(data.frame(nil = 2.23, 
-                                        tb = 2.23 + (2.23 * 0.25), 
+expect_that(qft.criteria.070(data.frame(nil = 3.23, 
+                                        tb = 3.23 + (3.23 * 0.25), 
                                         mito = 10)), 
             matches("Positive")
 )
 
-expect_that(qft.criteria.070(data.frame(nil = 2.23 - tol, 
-                                        tb = 2.23 + (2.23 * 0.25), 
+expect_that(qft.criteria.070(data.frame(nil = 3.23 - tol, 
+                                        tb = 3.23 + (3.23 * 0.25), 
                                         mito = 10)), 
             matches("Positive")
 )
 
-expect_that(qft.criteria.070(data.frame(nil = 2.23 + tol, 
-                                        tb = 2.23 + (2.23 * 0.25), 
+expect_that(qft.criteria.070(data.frame(nil = 3.23 + tol, 
+                                        tb = 3.23 + (3.23 * 0.25), 
                                         mito = 10)), 
             matches("Negative")
 )
@@ -227,16 +227,3 @@ expect_that(qft.criteria.070(data.frame(nil = 0.50 - tol,
 })
 
 
-################################################################################
-# Results match known data
-load(file.path("..", "..", "data", "test.qfts.rdata"))
-
-# Compute results
-fun.result <- trim.output(qft.criteria.070(test.qfts), "terse")
-
-# Compare to lab results
-test_that("qft.criteria.070 results exactly match original lab results from Dorman et al. 2012", {
-
-expect_that(all.equal(test.qfts$lab.result, fun.result), is_true())
-
-})
