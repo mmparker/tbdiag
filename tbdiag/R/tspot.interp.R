@@ -29,16 +29,16 @@ tspot.interp <- function(nil, panel_a, panel_b, mito,
 
 
     # Check that input values are positive - warn if negative
-    if(any(nil < 0)){warning("One or more nil values are negative - that probably shouldn't happen!")}
-    if(any(panel_a < 0)){warning("One or more panel_a values are negative - that probably shouldn't happen!")}
-    if(any(panel_b < 0)){warning("One or more panel_b values are negative - that probably shouldn't happen!")}
-    if(any(mito < 0)){warning("One or more mito values are negative - that probably shouldn't happen!")}
+    if(any(nil < 0, na.rm = TRUE)){warning("One or more nil values are negative - that probably shouldn't happen!")}
+    if(any(panel_a < 0, na.rm = TRUE)){warning("One or more panel_a values are negative - that probably shouldn't happen!")}
+    if(any(panel_b < 0, na.rm = TRUE)){warning("One or more panel_b values are negative - that probably shouldn't happen!")}
+    if(any(mito < 0, na.rm = TRUE)){warning("One or more mito values are negative - that probably shouldn't happen!")}
 
     # Check for non-integer results - warn if decimal
-    if(any(!is.wholenumber(nil))){warning("One or more nil values aren't integers - that probably shouldn't happen!")}
-    if(any(!is.wholenumber(panel_a))){warning("One or more panel_a values aren't integers - that probably shouldn't happen!")}
-    if(any(!is.wholenumber(panel_b))){warning("One or more panel_b values aren't integers - that probably shouldn't happen!")}
-    if(any(!is.wholenumber(mito))){warning("One or more mito values aren't integers - that probably shouldn't happen!")}
+    if(any(!is.wholenumber(nil), na.rm = TRUE)){warning("One or more nil values aren't integers - that probably shouldn't happen!")}
+    if(any(!is.wholenumber(panel_a), na.rm = TRUE)){warning("One or more panel_a values aren't integers - that probably shouldn't happen!")}
+    if(any(!is.wholenumber(panel_b), na.rm = TRUE)){warning("One or more panel_b values aren't integers - that probably shouldn't happen!")}
+    if(any(!is.wholenumber(mito), na.rm = TRUE)){warning("One or more mito values aren't integers - that probably shouldn't happen!")}
 
 
     # Censor to 20 spots
@@ -89,7 +89,7 @@ is.wholenumber <- function(x, tol = .Machine$double.eps^0.5){
 ################################################################################
 # Helper function to censor spot counts > 20
 tspot.cens <- function(x){
-    if(any(x > 20)){
+    if(any(x > 20, na.rm = TRUE)){
         x.cens <- x
         x.cens[x.cens > 20] <- 20
         warning("One or more values were greater than 20 spots and have been censored to 20 spots.")
