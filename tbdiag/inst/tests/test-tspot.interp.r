@@ -149,7 +149,39 @@ expect_that(tspot.interp(nil = 1:10,
 
 
 ################################################################################
-# If nil, panel_a, panel_b or mito is NA, tspot.interp returns an NA
+# tspot.interp tolerates NA values
+test_that("tspot.interp tolerates NA values", {
+
+expect_that(
+    is.na(tspot.interp(nil = as.numeric(NA), 
+                       panel_a = 5, 
+                       panel_b = 5, 
+                       mito = 20)), is_true()
+)
+
+expect_that(
+    is.na(tspot.interp(nil = 1, 
+                       panel_a = as.numeric(NA), 
+                       panel_b = 5, 
+                       mito = 20)), is_true()
+)
+
+expect_that(
+    is.na(tspot.interp(nil = 1, 
+                       panel_a = 5, 
+                       panel_b = as.numeric(NA), 
+                       mito = 20)), is_true()
+)
+
+expect_that(
+    is.na(tspot.interp(nil = 1, 
+                       panel_a = 5, 
+                       panel_b = 5, 
+                       mito = as.numeric(NA))), is_true()
+)
+
+})
+
 
 
 
