@@ -1,12 +1,12 @@
 
-Urgent:
- - Add "test could not be interpreted" result to the functions.
-
+Urgent
+====================
  - Better documentation (Roxygen?)
 
-New Functionality:
- - Additional IGRA criteria sets
 
+
+New Functionality
+====================
  - Serial criteria 
 
  - Given the numerous factors involved in interpreting TST results, is it 
@@ -19,6 +19,7 @@ New Functionality:
 
 
 Datasets:
+====================
  - Get permissions for:
    - Veerapathran et al 2008
    - TO 18
