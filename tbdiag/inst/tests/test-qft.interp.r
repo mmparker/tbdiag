@@ -49,6 +49,22 @@ expect_that(qft.interp(nil = 10, tb = 10, mito = 10 + tol), gives_warning())
 })
 
 
+################################################################################
+# qft.interp tolerates NA values
+test_that("qft.interp tolerates NA values", {
+expect_that(
+    is.na(qft.interp(nil = as.numeric(NA), tb = 0.75, mito = 10)), is_true()
+)
+
+expect_that(
+    is.na(qft.interp(nil = 0.10, tb = as.numeric(NA), mito = 10)), is_true()
+)
+
+expect_that(
+    is.na(qft.interp(nil = 0.10, tb = 0.75, mito = as.numeric(NA))), is_true()
+)
+
+})
 
 ################################################################################
 test_that("qft.cens warns and censors if given values > 10", {
