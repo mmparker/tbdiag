@@ -27,9 +27,9 @@ qft.interp <- function(nil, tb, mito,
 
 
     # Check that input values are positive - warn if negative
-    if(any(nil < 0)){warning("One or more nil values are negative - that probably shouldn't happen!")}
-    if(any(tb < 0)){warning("One or more tb values are negative - that probably shouldn't happen!")}
-    if(any(mito < 0)){warning("One or more mito values are negative - that probably shouldn't happen!")}
+    if(any(nil < 0, na.rm = TRUE)){warning("One or more nil values are negative - that probably shouldn't happen!")}
+    if(any(tb < 0, na.rm = TRUE)){warning("One or more tb values are negative - that probably shouldn't happen!")}
+    if(any(mito < 0, na.rm = TRUE)){warning("One or more mito values are negative - that probably shouldn't happen!")}
 
 
     # Censor to 10 IU/mL
