@@ -77,22 +77,3 @@ tspot.criteria <- function(interp.this){
 
 
 
-
-################################################################################
-# Function to check for integerness of spots - see ?is.integer for explanation
-is.wholenumber <- function(x, tol = .Machine$double.eps^0.5){
-    abs(x - round(x)) < tol
-}
-
-
-
-################################################################################
-# Helper function to censor spot counts > 20
-tspot.cens <- function(x){
-    if(any(x > 20, na.rm = TRUE)){
-        x.cens <- x
-        x.cens[x.cens > 20] <- 20
-        warning("One or more values were greater than 20 spots and have been censored to 20 spots.")
-        return(x.cens)
-    } else return(x)
-}

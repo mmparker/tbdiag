@@ -72,25 +72,3 @@ qft.criteria <- function(interp.this){
 }
 
 
-
-
-
-
-################################################################################
-# Helper function: censor values greater than 10
-qft.cens <- function(x){
-    if(any(x > 10, na.rm = TRUE)){
-        x.cens <- x
-        x.cens[x.cens > 10] <- 10
-        warning("One or more values were greater than 10 IU/mL and have been censored to 10 IU/mL.")
-        return(x.cens)
-    } else return(x)
-}
-
-
-
-
-
-
-
-
