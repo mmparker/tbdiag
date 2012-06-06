@@ -5,7 +5,7 @@ Version: 0.1
 Date: 2012-02-06
 Author: Matt Parker
 Maintainer: Matt Parker <mattmparker@gmail.com>
-Description: This package provides functions to assist researchers working in 
+Description: This package provides functions to assist researchers working in
     the field of tuberculosis diagnostics.  Functions for the interpretation of
     two popular interferon-gamma release assays are provided, and additional
     functionality is planned.
@@ -13,3 +13,15 @@ License: MIT
 URL: https://github.com/mmparker/tbdiag
 LazyLoad: yes
 Depends:
+    
+Collate:
+    'equal.lengths.r'
+    'qft.criteria.070.r'
+    'qft.criteria.cellestis.nomito.r'
+    'qft.criteria.cellestis.usa.r'
+    'qft.interp.R'
+    'trim.output.R'
+    'tspot.criteria.10spot.r'
+    'tspot.criteria.oxford.global.R'
+    'tspot.criteria.oxford.usa.R'
+    'tspot.interp.R'
