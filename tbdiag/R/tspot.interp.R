@@ -12,7 +12,7 @@
 #' @include equal.lengths.r
 #' @include tspot.cens.r
 #' @include is.wholenumber.r
-#' @include trim.output.R
+#' @include trim.output.r
 
 tspot.interp <- function(nil, panel_a, panel_b, mito,
                          criteria = "oxford.usa",
