@@ -8,7 +8,7 @@ library(roxygen2)
 pkg.path <- "tbdiag"
 
 # Run roxygen to update documentation
-document(pkg.path)
+roxygenise(pkg.path)
 
 # Load the tbdiag code
 load_all(pkg.path, reset = TRUE)
