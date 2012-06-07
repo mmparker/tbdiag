@@ -12,4 +12,18 @@ Description: This package provides functions to assist researchers working in
 License: MIT
 URL: https://github.com/mmparker/tbdiag
 LazyLoad: yes
-Depends:
+Collate:
+    'equal.lengths.r'
+    'is.wholenumber.r'
+    'qft.cens.r'
+    'qft.criteria.070.r'
+    'qft.criteria.cellestis.nomito.r'
+    'qft.criteria.cellestis.usa.r'
+    'trim.output.r'
+    'qft.interp.R'
+    'tbdiag-package.r'
+    'tspot.cens.r'
+    'tspot.criteria.10spot.r'
+    'tspot.criteria.oxford.global.r'
+    'tspot.criteria.oxford.usa.r'
+    'tspot.interp.R'
