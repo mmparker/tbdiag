@@ -9,5 +9,3 @@ load_all("I:/USERS/MParker/Rpackages/tbdiag/tbdiag", reset = TRUE)
 # Run all tests in inst/tests/
 test("I:/USERS/MParker/Rpackages/tbdiag/tbdiag")
 
-# Run roxygen to update documentation
-# document("tbdiag")
