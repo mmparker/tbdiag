@@ -16,8 +16,8 @@
   Confirm that all input vectors are the same length.
 }
 \examples{
-equal.lengths(rnorm(10), rnorm(10), rnorm(9))
-equal.lengths(rnorm(10))
-equal.lengths(rnorm(10), rnorm(10), rnorm(10))
+\dontrun{equal.lengths(rnorm(10), rnorm(10), rnorm(9))}
+\dontrun{equal.lengths(rnorm(10))}
+\dontrun{equal.lengths(rnorm(10), rnorm(10), rnorm(10))}
 }
 
