@@ -8,7 +8,7 @@ library(roxygen2)
 pkg.path <- "tbdiag"
 
 # Run roxygen to update documentation
-roxygenise(pkg.path)
+roxygenise(pkg.path, roclets = c("namespace", "rd"))
 
 # Load the tbdiag code
 load_all(pkg.path, reset = TRUE)
