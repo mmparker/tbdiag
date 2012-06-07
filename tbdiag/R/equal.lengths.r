@@ -1,7 +1,7 @@
 #' Confirm that all input vectors are the same length.
 #'
 #' 
-#' @param vec.list A list of vectors to be compared.
+#' @param ... Two or more vectors to be compared.
 #' @return Returns an error if the vectors are of unequal length, returns a warning if only one vector is supplied, and returns nothing if the vectors are of equal length.
 #' @export
 #' @examples

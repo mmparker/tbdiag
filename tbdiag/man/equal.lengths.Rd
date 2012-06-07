@@ -5,7 +5,7 @@
   equal.lengths(...)
 }
 \arguments{
-  \item{vec.list}{A list of vectors to be compared.}
+  \item{...}{Two or more vectors to be compared.}
 }
 \value{
   Returns an error if the vectors are of unequal length,
