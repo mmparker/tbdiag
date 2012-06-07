@@ -1,7 +1,7 @@
 
 Urgent
 ====================
- - Better documentation (Roxygen?)
+ - Detail criteria sets in documentation
 
 
 
@@ -16,6 +16,8 @@ New Functionality
 
  - Easier within-person variability analysis
 
+ - Add a vignette illustrating how to try out different criteria on the same
+   tests (and include follow-up analysis of those results)
 
 
 Datasets:
