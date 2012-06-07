@@ -18,10 +18,6 @@ License: \tab MIT\cr
 LazyLoad: \tab yes\cr
 }
 }
-\author{
-Matt Parker
-
-Maintainer: Matt Parker <mattmparker@gmail.com>
-}
+\author{Matt Parker \email{mattmparker@gmail.com}}
 
 \keyword{ package }
