@@ -8,8 +8,9 @@
 #' uses the Cellestis USA criterion by default; other criteria
 #' sets can be created as methods for the qft.criteria function.
 
-#' @include equal.lengths.r
-#' @include qft.cens.r
+#' @include equal.lengths.R
+#' @include qft.cens.R
+#' @include trim.output.R
 
 #' @export
 
