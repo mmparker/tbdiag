@@ -31,7 +31,7 @@
 #' \item{terse }{Returns a single word indicating the result (Negative, Borderline, Positive, Indeterminate).}
 #' \item{verbose }{Returns the same results as "terse", with the addition of a short comment indicating the reason for an "Indeterminate" result.}
 #'
-#'
+#' @export
 #'
 #' @references Oxford Immunotec <http://www.oxfordimmunotec.com/>
 #'
