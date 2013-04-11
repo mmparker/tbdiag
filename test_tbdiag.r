@@ -2,17 +2,35 @@
 
 library(devtools)
 library(testthat)
-library(roxygen2)
 
 # Identify the package path
 pkg.path <- "tbdiag"
 
-# Run roxygen to update documentation
-roxygenise(pkg.path)
+
+
+
 
 # Load the tbdiag code
 load_all(pkg.path, reset = TRUE)
 
 # Run all tests in inst/tests/
 test(pkg.path)
+
+# Update the documentation
+document(pkg.path)
+
+
+
+# Build it
+build(pkg.path)
+
+
+# Check it
+check(pkg.path)
+
+
+# Install it
+install(pkg.path)
+
+
 
