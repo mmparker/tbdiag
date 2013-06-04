@@ -2,7 +2,7 @@ Package: tbdiag
 Type: Package
 Title: Functions for tuberculosis diagnostics research
 Version: 0.1
-Date: 2012-02-06
+Date: 2013-06-04
 Author: Matt Parker
 Maintainer: Matt Parker <mattmparker@gmail.com>
 Description: This package provides functions to assist researchers working in
@@ -20,10 +20,10 @@ Collate:
     'qft.criteria.cellestis.nomito.r'
     'qft.criteria.cellestis.usa.r'
     'trim.output.r'
-    'qft.interp.r'
     'tbdiag-package.r'
     'tspot.cens.r'
     'tspot.criteria.10spot.r'
     'tspot.criteria.oxford.global.r'
     'tspot.criteria.oxford.usa.r'
-    'tspot.interp.r'
+    'qft.interp.R'
+    'tspot.interp.R'
