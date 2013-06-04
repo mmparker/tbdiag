@@ -17,8 +17,8 @@
 #' @include trim.output.r
 #'
 #' @param nil A vector of nil results (in spots)
-#' @param panel_a A vector of Panel A TB antigen (ESAT-6) results (in spots)
-#' @param panel_b A vector of Panel B TB antigen (CFP10) results (in spots)
+#' @param panel.a A vector of Panel A TB antigen (ESAT-6) results (in spots)
+#' @param panel.b A vector of Panel B TB antigen (CFP10) results (in spots)
 #' @param mito A vector of mitogen results (in spots)
 #' @param criteria The name of the desired result criteria (defaults to the Oxford Immunotec criteria for North America).
 #' @param verbosity The level of verbosity ("onechar", "terse", "verbose") of the output.
@@ -71,7 +71,7 @@
 
 
 
-tspot.interp <- function(nil, panel_a, panel_b, mito,
+tspot.interp <- function(nil, panel.a, panel.b, mito,
                          criteria = "oxford.usa",
                          verbosity = "terse",
                          ...){
@@ -79,41 +79,41 @@ tspot.interp <- function(nil, panel_a, panel_b, mito,
 
 
     # Check for equal vector lengths - throw error if not equal
-    equal.lengths(nil, panel_a, panel_b, mito)
+    equal.lengths(nil, panel.a, panel.b, mito)
 
 
     # Check for numeric results - throw error if non-numeric
     if(any(!is.numeric(nil),
-           !is.numeric(panel_a),
-           !is.numeric(panel_b),
+           !is.numeric(panel.a),
+           !is.numeric(panel.b),
            !is.numeric(mito))){stop(
            "The vectors of TB, nil, and mitogen values must all be numeric.")}
 
 
     # Check that input values are positive - warn if negative
     if(any(nil < 0, na.rm = TRUE)){warning("One or more nil values are negative - that probably shouldn't happen!")}
-    if(any(panel_a < 0, na.rm = TRUE)){warning("One or more panel_a values are negative - that probably shouldn't happen!")}
-    if(any(panel_b < 0, na.rm = TRUE)){warning("One or more panel_b values are negative - that probably shouldn't happen!")}
+    if(any(panel.a < 0, na.rm = TRUE)){warning("One or more panel.a values are negative - that probably shouldn't happen!")}
+    if(any(panel.b < 0, na.rm = TRUE)){warning("One or more panel.b values are negative - that probably shouldn't happen!")}
     if(any(mito < 0, na.rm = TRUE)){warning("One or more mito values are negative - that probably shouldn't happen!")}
 
     # Check for non-integer results - warn if decimal
     if(any(!is.wholenumber(nil), na.rm = TRUE)){warning("One or more nil values aren't integers - that probably shouldn't happen!")}
-    if(any(!is.wholenumber(panel_a), na.rm = TRUE)){warning("One or more panel_a values aren't integers - that probably shouldn't happen!")}
-    if(any(!is.wholenumber(panel_b), na.rm = TRUE)){warning("One or more panel_b values aren't integers - that probably shouldn't happen!")}
+    if(any(!is.wholenumber(panel.a), na.rm = TRUE)){warning("One or more panel.a values aren't integers - that probably shouldn't happen!")}
+    if(any(!is.wholenumber(panel.b), na.rm = TRUE)){warning("One or more panel.b values aren't integers - that probably shouldn't happen!")}
     if(any(!is.wholenumber(mito), na.rm = TRUE)){warning("One or more mito values aren't integers - that probably shouldn't happen!")}
 
 
     # Censor to 20 spots
     nil.cens <- tspot.cens(nil)
-    panel_a.cens <- tspot.cens(panel_a)
-    panel_b.cens <- tspot.cens(panel_b)
+    panel.a.cens <- tspot.cens(panel.a)
+    panel.b.cens <- tspot.cens(panel.b)
     mito.cens <- tspot.cens(mito)
 
 
     # Set up the interpretation object
     interp.this <- data.frame(nil = nil.cens,
-                              panel_a = panel_a.cens,
-                              panel_b = panel_b.cens,
+                              panel.a = panel.a.cens,
+                              panel.b = panel.b.cens,
                               mito = mito.cens
     )
 

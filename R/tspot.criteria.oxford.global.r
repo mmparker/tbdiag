@@ -6,8 +6,8 @@ tspot.criteria.oxford.global <- function(tspot.obj){
     result <- rep(NA, times = length(tspot.obj$nil)) 
 
     # Identify the maximum of Panel A - Nil and Panel B - Nil
-    panel.max <- pmax((tspot.obj$panel_a - tspot.obj$nil),
-                      (tspot.obj$panel_b - tspot.obj$nil)
+    panel.max <- pmax((tspot.obj$panel.a - tspot.obj$nil),
+                      (tspot.obj$panel.b - tspot.obj$nil)
     )
 
     # For ease of reading criteria, set up a flag for each of the TSPOT

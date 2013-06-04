@@ -7,24 +7,24 @@ test_that("Typical results for negatives are returned as negatives", {
 
 # Low
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 1, 
-                                                  panel_a = 1, 
-                                                  panel_b = 1, 
+                                                  panel.a = 1, 
+                                                  panel.b = 1, 
                                                   mito = 20)), 
             matches("Negative")
 )
 
 # Just below borderline - Panel A
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 1, 
-                           panel_a = 5, 
-                           panel_b = 1, 
+                           panel.a = 5, 
+                           panel.b = 1, 
                            mito = 20)), 
             matches("Negative")
 )
 
 # Just below borderline - Panel B
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 1, 
-                           panel_a = 1, 
-                           panel_b = 5, 
+                           panel.a = 1, 
+                           panel.b = 5, 
                            mito = 20)), 
             matches("Negative")
 )
@@ -32,8 +32,8 @@ expect_that(tspot.criteria.oxford.usa(data.frame(nil = 1,
 
 # Slightly higher
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5, 
-                           panel_a = 9, 
-                           panel_b = 9, 
+                           panel.a = 9, 
+                           panel.b = 9, 
                            mito = 20)), 
             matches("Negative")
 )
@@ -41,8 +41,8 @@ expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5,
 
 # Nil can be higher than TB
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 8, 
-                           panel_a = 1, 
-                           panel_b = 1, 
+                           panel.a = 1, 
+                           panel.b = 1, 
                            mito = 20)), 
             matches("Negative")
 )
@@ -56,32 +56,32 @@ test_that("Typical results for positives are returned as positives", {
 
 # Low edge of positive - Panel A
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 1, 
-                                       panel_a = 9, 
-                                       panel_b = 6, 
+                                       panel.a = 9, 
+                                       panel.b = 6, 
                                        mito = 20)), 
             matches("Positive")
 )
 
 # Low edge of positive - Panel B
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 1, 
-                                       panel_a = 6, 
-                                       panel_b = 9, 
+                                       panel.a = 6, 
+                                       panel.b = 9, 
                                        mito = 20)), 
             matches("Positive")
 )
 
 # Slightly higher - Panel A
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5, 
-                                       panel_a = 16, 
-                                       panel_b = 6, 
+                                       panel.a = 16, 
+                                       panel.b = 6, 
                                        mito = 20)), 
             matches("Positive")
 )
 
 # Slightly higher - Panel B
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5, 
-                                       panel_a = 6, 
-                                       panel_b = 16, 
+                                       panel.a = 6, 
+                                       panel.b = 16, 
                                        mito = 20)), 
             matches("Positive")
 )
@@ -89,8 +89,8 @@ expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5,
 
 # Even when mito < 20
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5, 
-                                       panel_a = 6, 
-                                       panel_b = 16, 
+                                       panel.a = 6, 
+                                       panel.b = 16, 
                                        mito = 10)), 
             matches("Positive")
 )
@@ -107,8 +107,8 @@ expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5,
 
 # 5 spots - Panel A
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5, 
-                                       panel_a = 10, 
-                                       panel_b = 1, 
+                                       panel.a = 10, 
+                                       panel.b = 1, 
                                        mito = 20)), 
             matches("Borderline")
 )
@@ -116,8 +116,8 @@ expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5,
 
 # 6 spots - Panel A
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5, 
-                                       panel_a = 11, 
-                                       panel_b = 1, 
+                                       panel.a = 11, 
+                                       panel.b = 1, 
                                        mito = 20)), 
             matches("Borderline")
 )
@@ -125,8 +125,8 @@ expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5,
 
 # 7 spots - Panel A
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5, 
-                                       panel_a = 12, 
-                                       panel_b = 1, 
+                                       panel.a = 12, 
+                                       panel.b = 1, 
                                        mito = 20)), 
             matches("Borderline")
 )
@@ -134,8 +134,8 @@ expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5,
 
 # 5 spots - Panel B
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5, 
-                                       panel_a = 1, 
-                                       panel_b = 10, 
+                                       panel.a = 1, 
+                                       panel.b = 10, 
                                        mito = 20)), 
             matches("Borderline")
 )
@@ -143,8 +143,8 @@ expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5,
 
 # 6 spots - Panel B
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5, 
-                                       panel_a = 1, 
-                                       panel_b = 11, 
+                                       panel.a = 1, 
+                                       panel.b = 11, 
                                        mito = 20)), 
             matches("Borderline")
 )
@@ -152,8 +152,8 @@ expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5,
 
 # 7 spots - Panel B
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5, 
-                                       panel_a = 1, 
-                                       panel_b = 12, 
+                                       panel.a = 1, 
+                                       panel.b = 12, 
                                        mito = 20)), 
             matches("Borderline")
 )
@@ -161,15 +161,15 @@ expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5,
 
 # Even when mito < 20
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5, 
-                                       panel_a = 12, 
-                                       panel_b = 1, 
+                                       panel.a = 12, 
+                                       panel.b = 1, 
                                        mito = 10)), 
             matches("Borderline")
 )
 
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 5, 
-                                       panel_a = 1, 
-                                       panel_b = 12, 
+                                       panel.a = 1, 
+                                       panel.b = 12, 
                                        mito = 10)), 
             matches("Borderline")
 )
@@ -184,16 +184,16 @@ test_that("Typical results for high-nil invalids are returned as high-nil invali
 
 # Nil over 10, everything else standard
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 11, 
-                                       panel_a = 1, 
-                                       panel_b = 1, 
+                                       panel.a = 1, 
+                                       panel.b = 1, 
                                        mito = 20)), 
             matches("Invalid - high nil")
 )
 
 # Takes precedence over low mitogen
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 11, 
-                                       panel_a = 1, 
-                                       panel_b = 1, 
+                                       panel.a = 1, 
+                                       panel.b = 1, 
                                        mito = 10)), 
             matches("Invalid - high nil")
 )
@@ -207,16 +207,16 @@ test_that("Typical results for low-mito invalids are returned as low-mito invali
 
 # Very low
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 1, 
-                                      panel_a = 1, 
-                                      panel_b = 1, 
+                                      panel.a = 1, 
+                                      panel.b = 1, 
                                       mito = 10)), 
             matches("Invalid - low mitogen")
 )
 
 # At the threshold
 expect_that(tspot.criteria.oxford.usa(data.frame(nil = 1, 
-                                      panel_a = 1, 
-                                      panel_b = 1, 
+                                      panel.a = 1, 
+                                      panel.b = 1, 
                                       mito = 19)), 
             matches("Invalid - low mitogen")
 )

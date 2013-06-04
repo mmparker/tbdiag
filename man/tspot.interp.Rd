@@ -2,16 +2,16 @@
 \alias{tspot.interp}
 \title{Interpret the results of the Oxford Immunotec TSPOT.TB assay for latent tuberculosis infection.}
 \usage{
-  tspot.interp(nil, panel_a, panel_b, mito,
+  tspot.interp(nil, panel.a, panel.b, mito,
     criteria = "oxford.usa", verbosity = "terse", ...)
 }
 \arguments{
   \item{nil}{A vector of nil results (in spots)}
 
-  \item{panel_a}{A vector of Panel A TB antigen (ESAT-6)
+  \item{panel.a}{A vector of Panel A TB antigen (ESAT-6)
   results (in spots)}
 
-  \item{panel_b}{A vector of Panel B TB antigen (CFP10)
+  \item{panel.b}{A vector of Panel B TB antigen (CFP10)
   results (in spots)}
 
   \item{mito}{A vector of mitogen results (in spots)}
@@ -51,6 +51,35 @@
   not a replacement for manual interpretation,
   manufacturer-provided software, or common sense.
   Absolutely not for clinical use.
+}
+\examples{
+# Calculate results
+test.tspots$result.check <- with(test.tspots,
+                                 tspot.interp(nil = nil,
+                                              panel.a = panel.a,
+                                              panel.b = panel.b,
+                                              mito = mito))
+
+# Compare lab and calculated results
+with(test.tspots, table(lab.result, result.check, exclude = NULL))
+
+# Compare different levels of verbosity
+test.tspots$verbose.check <- with(test.tspots,
+                                  tspot.interp(nil = nil,
+                                               panel.a = panel.a,
+                                               panel.b = panel.b,
+                                               mito = mito,
+                                               verbosity = "verbose"))
+
+test.tspots$onechar.check <- with(test.tspots,
+                                  tspot.interp(nil = nil,
+                                               panel.a = panel.a,
+                                               panel.b = panel.b,
+                                               mito = mito,
+                                               verbosity = "onechar"))
+
+unique(test.tspots[ , c("lab.result", "result.check",
+                      "verbose.check", "onechar.check")])
 }
 \references{
   Oxford Immunotec <http://www.oxfordimmunotec.com/>

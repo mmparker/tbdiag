@@ -3,7 +3,7 @@
 \title{Interpret the results of the Cellestis Quantiferon Gold In-Tube assay for latent tuberculosis infection.}
 \usage{
   qft.interp(nil, tb, mito, criteria = "cellestis.usa",
-    verbosity = "verbose", ...)
+    verbosity = "terse", ...)
 }
 \arguments{
   \item{nil}{A vector of nil results (in IU/mL)}
@@ -47,6 +47,32 @@
   not a replacement for manual interpretation,
   manufacturer-provided software, or common sense.
   Absolutely not for clinical use.
+}
+\examples{
+# Calculate results
+test.qfts$result.check <- with(test.qfts,
+                               qft.interp(nil = nil,
+                                          tb = tb,
+                                          mito = mito))
+
+# Compare lab and calculated results
+with(test.qfts, table(lab.result, result.check, exclude = NULL))
+
+# Compare different levels of verbosity
+test.qfts$verbose.check <- with(test.qfts,
+                                qft.interp(nil = nil,
+                                           tb = tb,
+                                           mito = mito,
+                                           verbosity = "verbose"))
+
+test.qfts$onechar.check <- with(test.qfts,
+                                qft.interp(nil = nil,
+                                           tb = tb,
+                                           mito = mito,
+                                           verbosity = "onechar"))
+
+unique(test.qfts[ , c("lab.result", "result.check",
+                      "verbose.check", "onechar.check")])
 }
 \references{
   Cellestis <http://www.cellestis.com/>
