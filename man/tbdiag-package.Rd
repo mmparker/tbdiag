@@ -12,7 +12,24 @@
 }
 \author{
   Matt Parker \email{mattmparker@gmail.com}
+
+  Matt Parker \email{mattmparker@gmail.com}
+
+  Matt Parker \email{mattmparker@gmail.com}
 }
+\keyword{6,434}
+\keyword{6,833}
+\keyword{A}
+\keyword{QFT}
+\keyword{TSPOT}
+\keyword{data}
+\keyword{of}
 \keyword{package}
+\keyword{qft}
+\keyword{quantiferon}
+\keyword{real}
+\keyword{results.}
+\keyword{sample}
+\keyword{tspot}
 \keyword{tuberculosis}
 

@@ -7,4 +7,19 @@
 #' @docType package
 #' @author Matt Parker \email{mattmparker@@gmail.com}
 #' @keywords package tuberculosis
+
+#' A sample of 6,833 real QFT results.
+#'
+#' @name test.qfts
+#' @docType data
+#' @author Matt Parker \email{mattmparker@@gmail.com}
+#' @keywords data quantiferon qft
+
+#' A sample of 6,434 real TSPOT results.
+#'
+#' @name test.tspots
+#' @docType data
+#' @author Matt Parker \email{mattmparker@@gmail.com}
+#' @keywords data tspot
+
 NULL
