@@ -235,7 +235,7 @@ load(file.path("..", "..", "data", "test.qfts.rdata"))
 fun.result <- trim.output(qft.criteria.cellestis.usa(test.qfts), "terse")
 
 # Compare to lab results
-test_that("qft.criteria.cellestis.usa results exactly match original lab results from Dorman et al. 2012", {
+test_that("qft.criteria.cellestis.usa results exactly match original lab results", {
 
 expect_that(all.equal(test.qfts$lab.result, fun.result), is_true())
 
