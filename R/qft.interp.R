@@ -35,10 +35,38 @@
 #' @note This function is provided purely as a convenience and is not a replacement for manual interpretation, manufacturer-provided software, or common sense.  Absolutely not for clinical use. 
 #' 
 #' @seealso \code{\link{tspot.interp}} for TSPOT.TB interpretation. 
+#'
+#' @examples
+#' 
+#' # Calculate results
+#' test.qfts$result.check <- with(test.qfts, 
+#'                                qft.interp(nil = nil, 
+#'                                           tb = tb, 
+#'                                           mito = mito))
+#' 
+#' # Compare lab and calculated results
+#' with(test.qfts, table(lab.result, result.check, exclude = NULL))
+#' 
+#' # Compare different levels of verbosity
+#' test.qfts$verbose.check <- with(test.qfts, 
+#'                                 qft.interp(nil = nil, 
+#'                                            tb = tb, 
+#'                                            mito = mito,
+#'                                            verbosity = "verbose"))
+#'
+#' test.qfts$onechar.check <- with(test.qfts, 
+#'                                 qft.interp(nil = nil, 
+#'                                            tb = tb, 
+#'                                            mito = mito,
+#'                                            verbosity = "onechar"))
+#'
+#' unique(test.qfts[ , c("lab.result", "result.check", 
+#'                       "verbose.check", "onechar.check")])
+
 
 qft.interp <- function(nil, tb, mito,
                        criteria = "cellestis.usa",
-                       verbosity = "verbose",
+                       verbosity = "terse",
                        ...){
 
 
