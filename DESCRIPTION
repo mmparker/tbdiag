@@ -12,6 +12,7 @@ Description: This package provides functions to assist researchers working in
 License: MIT
 URL: https://github.com/mmparker/tbdiag
 LazyLoad: yes
+LazyData: true
 Collate:
     'equal.lengths.r'
     'is.wholenumber.r'
