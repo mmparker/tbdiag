@@ -14,9 +14,9 @@ trim.output <- function(res, verbosity = "terse"){
     if(verbosity %in% "onechar"){substr(res, 1, 1)} else
 
         # If verbosity is "terse", just the first word
-        if(verbosity %in% "terse"){gsub(res, 
+        if(verbosity %in% "terse"){gsub(x = res, 
                                         pattern = " .*$", 
-                                        replace = "")} else 
+                                        replacement = "")} else 
 
             # If verbose, indeterminates indicate which criteria
             if(verbosity %in% "verbose"){res}
