@@ -8,9 +8,9 @@ interpreting Oxford Immunotec T.SPOT results.  These function-families can
 interpret by the manufacturers' criteria for North America and at least one
 non-American country (e.g., one QFT criteria set excludes the nil/mitogen
 indeterminate and one T.SPOT criteria set excludes the borderline category).
-More criteria will be added shortly; users can also easily extend the functions
-by creating new S3 methods for the ___.criteria functions.
-
+More criteria will be added shortly; users can also extend the functions by 
+creating new S3 methods for the qft.criteria and tspot.criteria functions.
+ 
 ### Results Validation
 
 I've compared the results of these functions to several thousand lab-reported 
