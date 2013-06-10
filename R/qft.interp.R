@@ -28,7 +28,21 @@
 #' \item{terse }{Returns a single word indicating the result (Negative, Positive, Indeterminate).} 
 #' \item{verbose }{Returns the same results as "terse", with the addition of a short comment indicating the reason for an "Indeterminate" result.}
 #' 
+#' Multiple criteria sets are available.  The function defaults to the
+#' standard Cellestis criteria for the United States of America
+#' (\code{criteria = "cellestis.usa"}),
+#' but other currently available options include: 
+#' \item{criteria = "cellestis.nomito"}{The Cellestis criteria for many regions
+#' outside of North America, in which indeterminate results are indicated for 
+#' tests with high nil results, but not for tests with a \code{Mitogen - Nil} 
+#' difference of less than 0.50 (as is the case in the US);}
+#' \item{criteria = "070"}{A criteria set in which the threshold for positivity
+#' is raised from \code{Antigen - Nil = 0.35} to \code{Antigen - Nil = 0.70}, as
+#' has been suggested by some studies.}
 #'
+#' @details All IU/mL results greater than 10 are automatically censored to 10
+#' for the purposes of calculating qualitative results, following Cellestis's
+#' interpretation instructions.
 #'
 #' @references Cellestis <http://www.cellestis.com/> 
 #' 

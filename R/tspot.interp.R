@@ -30,14 +30,29 @@
 #' \item{onechar }{Returns a single character indicating the result (N for Negative, B for Borderline, P for Positive, I for Indeterminate).}
 #' \item{terse }{Returns a single word indicating the result (Negative, Borderline, Positive, Indeterminate).}
 #' \item{verbose }{Returns the same results as "terse", with the addition of a short comment indicating the reason for an "Indeterminate" result.}
+#' 
+#' Multiple criteria sets are available.  The function defaults to the
+#' standard Oxford North American criteria (\code{criteria = "oxford.usa"}),
+#' but other currently available options include: 
+#' \item{criteria = "oxford.global"}{The Oxford global criteria, for which the
+#' criterion for positivity is lowered from an 8-spot difference between the 
+#' antigen and nil panels and which does not include the borderline qualitative
+#' result;}
+#' \item{criteria = "10spot"}{A criteria set in which the borderline result is
+#' extended to include differences of 5 to 9 spots and only differences of 10 or
+#' more spots indicate a positive result.}
 #'
-#' @export
+#' @details All spot counts greater than 20 are automatically censored to 20
+#' for the purposes of calculating qualitative results, following Oxford's
+#' interpretation instructions.
 #'
 #' @references Oxford Immunotec <http://www.oxfordimmunotec.com/>
 #'
 #' @note This function is provided purely as a convenience and is not a replacement for manual interpretation, manufacturer-provided software, or common sense.  Absolutely not for clinical use. 
 #'
 #' @seealso \code{\link{qft.interp}} for Quantiferon interpretation. 
+#' 
+#' @export
 #' 
 #' @examples
 #' 
