@@ -14,12 +14,14 @@ creating new S3 methods for the qft.criteria and tspot.criteria functions.
 ## Package Info
 
 The most reliable version of the package is available on CRAN; just type
-`install.packages("tbdiag")` in R to get it. This repository has (at least)
-two branches: `master` should always be the latest, fully-functional version
-of the package (i.e., the one I'm probably using); `dev` contains work in
-progress. There may be other branches for incomplete features. You can install
-any of the GitHub branches by installing the `devtools` package and typing
-`install_github("mmparker/tbdiag/branch")`.
+`install.packages("tbdiag")` in R to get it. The `master` branch in this
+repository is the most recent *functioning* version; it's the one I'm probably
+using in my day to day work, but probably isn't ready for CRAN just yet.
+New features and other works-in-progress live on their own branches until
+they're ready to pulled into `master`; there's no guarantee they work.
+
+You can install any of the GitHub branches by installing the 
+`devtools` package and typing `install_github("mmparker/tbdiag/branch")`.
 
  
 ### Results Validation
