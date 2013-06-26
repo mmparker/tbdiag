@@ -10,6 +10,17 @@ non-American country (e.g., one QFT criteria set excludes the nil/mitogen
 indeterminate and one T.SPOT criteria set excludes the borderline category).
 More criteria will be added shortly; users can also extend the functions by 
 creating new S3 methods for the qft.criteria and tspot.criteria functions.
+
+## Package Info
+
+The most reliable version of the package is available on CRAN; just type
+`install.packages("tbdiag")` in R to get it. This repository has (at least)
+two branches: `master` should always be the latest, fully-functional version
+of the package (i.e., the one I'm probably using); `dev` contains work in
+progress. There may be other branches for incomplete features. You can install
+any of the GitHub branches by installing the `devtools` package and typing
+`install_github("mmparker/tbdiag/branch")`.
+
  
 ### Results Validation
 
