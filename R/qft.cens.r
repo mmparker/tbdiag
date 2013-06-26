@@ -1,5 +1,16 @@
-# This function censors QFT result values greater than 10 IU/mL to 10 IU/mL,
-# per Cellestis' instructions
+#' Censor Quantiferon quantitative results to 10 IU/mL.
+#'
+#' This functions censors a vector of quantitative results of the 
+#' Quantiferon (nil, antigen, mitogen) from values greater than 10 IU/mL to
+#' 10 IU/mL, following the Cellestis test insert instructions.
+#' Intended for internal use only.
+#' 
+#' @param x A vector of numeric results from the Quantiferon
+#'
+#' @return The input vector with all results greater than 10 censored to 10.
+#' 
+#' @seealso \code{\link{tspot.cens}}
+#' 
 
 qft.cens <- function(x){
     # If any values are greater than 10, censor those values to 10
