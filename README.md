@@ -1,4 +1,3 @@
-
 ## tbdiag
 
 This package provides functions for working with TB diagnostics data.
@@ -16,7 +15,7 @@ creating new S3 methods for the qft.criteria and tspot.criteria functions.
 The most reliable version of the package is available on CRAN; just type
 `install.packages("tbdiag")` in R to get it. The `master` branch in this
 repository is the most recent *functioning* version; it's the one I'm probably
-using in my day to day work, but probably isn't ready for CRAN just yet.
+using in my day-to-day work, but probably isn't ready for CRAN just yet.
 New features and other works-in-progress live on their own branches until
 they're ready to pulled into `master`; there's no guarantee they work.
 
