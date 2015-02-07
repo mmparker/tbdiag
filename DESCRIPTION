@@ -1,7 +1,7 @@
 Package: tbdiag
 Type: Package
 Title: Functions for tuberculosis diagnostics research
-Version: 0.1
+Version: 0.1.1
 Date: 2013-06-10
 Author: Matt Parker
 Maintainer: Matt Parker <mattmparker@gmail.com>
