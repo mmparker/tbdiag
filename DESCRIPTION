@@ -9,7 +9,7 @@ Description: This package provides functions to assist researchers working in
     the field of tuberculosis diagnostics.  Functions for the interpretation of
     two popular interferon-gamma release assays are provided, and additional
     functionality is planned.
-License: MIT
+License: MIT + file LICENSE
 URL: https://github.com/mmparker/tbdiag
 LazyLoad: yes
 LazyData: true
