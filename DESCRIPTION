@@ -1,14 +1,13 @@
 Package: tbdiag
 Type: Package
-Title: Functions for tuberculosis diagnostics research
+Title: Functions for Tuberculosis Diagnostics Research
 Version: 0.1.1
 Date: 2013-06-10
 Author: Matt Parker
 Maintainer: Matt Parker <mattmparker@gmail.com>
-Description: This package provides functions to assist researchers working in
-    the field of tuberculosis diagnostics.  Functions for the interpretation of
+Description: Functions for the interpretation of
     two popular interferon-gamma release assays are provided, and additional
-    functionality is planned.
+    functionality may be added if there's demand.
 License: MIT + file LICENSE
 URL: https://github.com/mmparker/tbdiag
 LazyLoad: yes
