@@ -2,7 +2,7 @@ Package: tbdiag
 Type: Package
 Title: Functions for Tuberculosis Diagnostics Research
 Version: 0.1.1
-Date: 2013-06-10
+Date: 2015-02-06
 Author: Matt Parker
 Maintainer: Matt Parker <mattmparker@gmail.com>
 Description: Functions for the interpretation of
