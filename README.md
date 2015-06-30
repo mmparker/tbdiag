@@ -1,3 +1,6 @@
+Note: this package is no longer being actively developed, but if you find 
+it useful, please don't hesitate to contact me with bugs or requests.
+
 ## tbdiag
 
 This package provides functions for working with TB diagnostics data.
